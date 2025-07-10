@@ -12,8 +12,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "eslint . --fix",
-    "db:generate": "drizzle-kit generate",
-    "setup-env": "node setup-env.js"
+    "db:generate": "drizzle-kit generate"
   },
   "dependencies": {
     "@iconify-json/lucide": "^1.2.45",
