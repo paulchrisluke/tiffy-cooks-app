@@ -40,5 +40,5 @@ export const env = createEnv({
       )
       .optional(),
   },
-  skipValidation: process.env.NODE_ENV === 'production' && process.env.NUXT_HUB_ENV === 'production',
+  skipValidation: process.env.NODE_ENV === 'production' || process.env.NUXT_HUB_ENV === 'production' || process.env.CI === 'true',
 })
