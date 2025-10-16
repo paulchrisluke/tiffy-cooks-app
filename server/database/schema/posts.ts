@@ -17,6 +17,22 @@ export const posts = sqliteTable('posts', {
     .references(() => teams.id, { onDelete: 'cascade' }),
   title: text('title').notNull(),
   content: text('content').notNull(),
+  // Content type system - supports recipes, lessons, and posts
+  type: text('type').notNull().default('post'), // 'recipe', 'lesson', 'post'
+  slug: text('slug').notNull().unique(),
+  // Recipe-specific fields (schema.org Recipe compliance)
+  tags: text('tags', { mode: 'json' }).$type<string[]>(),
+  difficulty: text('difficulty'), // 'beginner', 'intermediate', 'advanced'
+  prep_time: integer('prep_time'), // minutes
+  cook_time: integer('cook_time'), // minutes
+  servings: integer('servings'),
+  ingredients: text('ingredients', { mode: 'json' }).$type<Array<{ name: string, amount: string, unit?: string }>>(),
+  instructions: text('instructions', { mode: 'json' }).$type<Array<{ step: number, text: string }>>(),
+  // Publishing controls
+  is_public: integer('is_public', { mode: 'boolean' }).notNull().default(false),
+  is_featured: integer('is_featured', { mode: 'boolean' }).notNull().default(false),
+  published_at: integer('published_at', { mode: 'timestamp' }),
+  // Timestamps
   createdAt: integer('created_at', { mode: 'timestamp' }).notNull().$default(
     () => new Date(),
   ).notNull(),

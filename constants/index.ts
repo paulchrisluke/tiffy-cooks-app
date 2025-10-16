@@ -2,6 +2,7 @@ export enum UserRole {
   MEMBER = 'member',
   ADMIN = 'admin',
   OWNER = 'owner',
+  CREATOR = 'creator',
 }
 
 export enum OneTimePasswordTypes {

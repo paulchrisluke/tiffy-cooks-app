@@ -12,7 +12,12 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "eslint . --fix",
-    "db:generate": "drizzle-kit generate"
+    "db:generate": "drizzle-kit generate",
+    "test": "vitest",
+    "test:unit": "vitest run --dir tests/unit",
+    "test:integration": "vitest run --dir tests/integration",
+    "test:e2e": "playwright test",
+    "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@iconify-json/lucide": "^1.2.45",
@@ -39,17 +44,22 @@
     "zod": "^3.25.48"
   },
   "devDependencies": {
+    "@nuxt/test-utils": "^3.19.2",
     "@tailwindcss/typography": "^0.5.16",
+    "@vue/test-utils": "^2.4.6",
     "@vueuse/core": "^13.3.0",
     "@vueuse/nuxt": "13.3.0",
     "dotenv": "^16.5.0",
     "drizzle-kit": "0.31.1",
+    "happy-dom": "^20.0.2",
     "jsonc-eslint-parser": "^2.4.0",
     "nuxi": "^3.25.1",
     "nuxthub-ratelimit": "^1.0.4",
+    "playwright": "^1.56.0",
     "simple-git-hooks": "^2.13.0",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.33.1",
+    "vitest": "^3.2.4",
     "vue-tsc": "^2.2.10",
     "wrangler": "^4.18.0"
   },

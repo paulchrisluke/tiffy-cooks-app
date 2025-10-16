@@ -39,6 +39,7 @@ export const env = createEnv({
         'Phone number must be in E.164 format (e.g. +12125551234)',
       )
       .optional(),
+    OPENAI_API_KEY: z.string().min(1).optional(),
   },
   skipValidation: process.env.NODE_ENV === 'production' || process.env.NUXT_HUB_ENV === 'production' || process.env.CI === 'true',
 })
