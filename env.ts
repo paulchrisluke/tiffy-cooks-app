@@ -8,19 +8,19 @@ export const env = createEnv({
       .transform((val) => val === 'true')
       .pipe(z.boolean())
       .optional(),
-    BASE_URL: z.string().url().default('http://localhost:3000'),
-    APP_NAME: z.string().default('Tiffy App'),
-    APP_DESCRIPTION: z.string().default('A modern, feature-rich application built with Nuxt 3 and NuxtHub for seamless development and deployment.'),
-    LOGO_URL: z.string().url().default('https://supersaas.dev/logo.png'),
-    RESEND_API_TOKEN: z.string().min(1).default('re_test_placeholder_token_for_build'),
+    BASE_URL: z.string().url(),
+    APP_NAME: z.string(),
+    APP_DESCRIPTION: z.string(),
+    LOGO_URL: z.string().url(),
+    RESEND_API_TOKEN: z.string().min(1),
     NUXT_OAUTH_GITHUB_CLIENT_ID: z.string().min(1).optional(),
     NUXT_OAUTH_GITHUB_CLIENT_SECRET: z.string().min(1).optional(),
-    NUXT_OAUTH_GOOGLE_CLIENT_ID: z.string().min(1).default('placeholder_google_client_id'),
-    NUXT_OAUTH_GOOGLE_CLIENT_SECRET: z.string().min(1).default('placeholder_google_client_secret'),
-    NUXT_SESSION_PASSWORD: z.string().min(32).default('placeholder_32_char_session_password_here'),
-    NUXT_STRIPE_SECRET_KEY: z.string().min(1).default('sk_test_placeholder_stripe_key'),
-    NUXT_STRIPE_WEBHOOK_SECRET: z.string().min(1).default('whsec_placeholder_webhook_secret'),
-    FROM_EMAIL: z.string().email().default('placeholder@example.com'),
+    NUXT_OAUTH_GOOGLE_CLIENT_ID: z.string().min(1),
+    NUXT_OAUTH_GOOGLE_CLIENT_SECRET: z.string().min(1),
+    NUXT_SESSION_PASSWORD: z.string().min(32),
+    NUXT_STRIPE_SECRET_KEY: z.string().min(1),
+    NUXT_STRIPE_WEBHOOK_SECRET: z.string().min(1),
+    FROM_EMAIL: z.string().email(),
     EMAIL_PROVIDER: z.enum([
       'resend',
       'mailgun',
@@ -28,8 +28,8 @@ export const env = createEnv({
       'postmark',
       'plunk',
       'zeptomail',
-    ]).default('resend'),
-    PAYMENT_PROVIDER: z.enum(['stripe', 'lemonsqueezy']).default('stripe'),
+    ]),
+    PAYMENT_PROVIDER: z.enum(['stripe', 'lemonsqueezy']),
     TWILIO_ACCOUNT_SID: z.string().min(1).optional(),
     TWILIO_AUTH_TOKEN: z.string().min(1).optional(),
     TWILIO_PHONE_NUMBER: z
@@ -40,4 +40,5 @@ export const env = createEnv({
       )
       .optional(),
   },
+  skipValidation: process.env.NODE_ENV === 'production' && process.env.NUXT_HUB_ENV === 'production',
 })
