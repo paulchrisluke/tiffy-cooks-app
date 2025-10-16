@@ -13,8 +13,8 @@ export const env = createEnv({
     APP_DESCRIPTION: z.string(),
     LOGO_URL: z.string().url(),
     RESEND_API_TOKEN: z.string().min(1),
-    NUXT_OAUTH_GITHUB_CLIENT_ID: z.string().min(1),
-    NUXT_OAUTH_GITHUB_CLIENT_SECRET: z.string().min(1),
+    NUXT_OAUTH_GITHUB_CLIENT_ID: z.string().min(1).optional(),
+    NUXT_OAUTH_GITHUB_CLIENT_SECRET: z.string().min(1).optional(),
     NUXT_OAUTH_GOOGLE_CLIENT_ID: z.string().min(1),
     NUXT_OAUTH_GOOGLE_CLIENT_SECRET: z.string().min(1),
     NUXT_SESSION_PASSWORD: z.string().min(32),
@@ -30,13 +30,14 @@ export const env = createEnv({
       'zeptomail',
     ]),
     PAYMENT_PROVIDER: z.enum(['stripe', 'lemonsqueezy']),
-    TWILIO_ACCOUNT_SID: z.string().min(1),
-    TWILIO_AUTH_TOKEN: z.string().min(1),
+    TWILIO_ACCOUNT_SID: z.string().min(1).optional(),
+    TWILIO_AUTH_TOKEN: z.string().min(1).optional(),
     TWILIO_PHONE_NUMBER: z
       .string()
       .regex(
         /^\+[1-9]\d{1,14}$/,
         'Phone number must be in E.164 format (e.g. +12125551234)',
-      ),
+      )
+      .optional(),
   },
 })
