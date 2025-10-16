@@ -37,7 +37,7 @@ jobs:
         uses: nuxt-hub/action@v1
         id: deploy
         with:
-          project-key: essentials-v3-dzwp
+          project-key: tiffy-app-ntm1
     env:
       # Auth Utils
       NUXT_OAUTH_GITHUB_CLIENT_ID: ${{ secrets.NUXT_OAUTH_GITHUB_CLIENT_ID }}
