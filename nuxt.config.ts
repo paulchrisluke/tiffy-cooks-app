@@ -30,7 +30,6 @@ export default defineNuxtConfig({
   future: { compatibilityVersion: 4 },
   compatibilityDate: '2024-07-30',
   nitro: {
-    preset: 'cloudflare_module',
     rollupConfig: {
       // @ts-expect-error - Rollup plugin type definitions are incomplete for vue plugin
       plugins: [vue()],
