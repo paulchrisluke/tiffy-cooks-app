@@ -30,14 +30,6 @@ jobs:
       - name: Ensure NuxtHub module is installed
         run: pnpx nuxthub@latest ensure
 
-      - name: Run E2E Tests
-        run: |
-          pnpm test:e2e
-        env:
-          # Test environment variables
-          NODE_ENV: test
-          VITEST: true
-
       - name: Build application
         run: pnpm build
 

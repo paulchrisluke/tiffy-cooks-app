@@ -36,13 +36,13 @@ describe('Email Service', () => {
     } else {
       delete process.env.NODE_ENV
     }
-    
+
     if (originalVitest !== undefined) {
       process.env.VITEST = originalVitest
     } else {
       delete process.env.VITEST
     }
-    
+
     // Restore console spy
     consoleSpy.mockRestore()
   })
@@ -50,7 +50,7 @@ describe('Email Service', () => {
   it('should log email in test mode instead of sending', async () => {
     // Set test environment
     process.env.NODE_ENV = 'test'
-    
+
     const emailData = {
       to: 'test@example.com',
       subject: 'Test Email',
@@ -66,7 +66,7 @@ describe('Email Service', () => {
     // Set VITEST environment
     process.env.VITEST = 'true'
     process.env.NODE_ENV = 'production'
-    
+
     const emailData = {
       to: 'test@example.com',
       subject: 'Test Email',
