@@ -6,7 +6,7 @@ test.describe('User Registration (Unauthenticated)', () => {
     const userData = createTestUser()
 
     const response = await request.post('/api/auth/password/register', {
-      data: userData
+      data: userData,
     })
 
     expect(response.status()).toBe(201)
@@ -15,7 +15,7 @@ test.describe('User Registration (Unauthenticated)', () => {
     expect(user).toMatchObject({
       email: userData.email,
       name: userData.name,
-      emailVerified: true // Auto-verified in test mode
+      emailVerified: true, // Auto-verified in test mode
     })
     expect(user.id).toBeDefined()
     expect(user.hashedPassword).toBeUndefined() // Should be sanitized
@@ -26,13 +26,13 @@ test.describe('User Registration (Unauthenticated)', () => {
 
     // First registration should succeed
     const firstResponse = await request.post('/api/auth/password/register', {
-      data: userData
+      data: userData,
     })
     expect(firstResponse.status()).toBe(201)
 
     // Second registration with same email should fail
     const secondResponse = await request.post('/api/auth/password/register', {
-      data: userData
+      data: userData,
     })
     expect(secondResponse.status()).toBe(400)
 
@@ -45,7 +45,7 @@ test.describe('User Registration (Unauthenticated)', () => {
     userData.password = 'short' // Less than 8 characters
 
     const response = await request.post('/api/auth/password/register', {
-      data: userData
+      data: userData,
     })
 
     expect(response.status()).toBe(400)
@@ -56,7 +56,7 @@ test.describe('User Registration (Unauthenticated)', () => {
     userData.email = 'invalid-email'
 
     const response = await request.post('/api/auth/password/register', {
-      data: userData
+      data: userData,
     })
 
     expect(response.status()).toBe(400)
@@ -65,9 +65,9 @@ test.describe('User Registration (Unauthenticated)', () => {
   test('should validate required fields', async ({ request }) => {
     const response = await request.post('/api/auth/password/register', {
       data: {
-        email: 'test@example.com'
+        email: 'test@example.com',
         // Missing name and password
-      }
+      },
     })
 
     expect(response.status()).toBe(400)

@@ -39,9 +39,8 @@ test.describe('Team Creation (Authenticated)', () => {
     const teamData = createTestTeam()
 
     const response = await request.post('/api/teams', {
-      data: teamData
+      data: teamData,
     })
-
 
     expect(response.status()).toBe(200)
 
@@ -49,7 +48,7 @@ test.describe('Team Creation (Authenticated)', () => {
     expect(team).toMatchObject({
       name: teamData.name,
       slug: teamData.slug,
-      logo: teamData.logo
+      logo: teamData.logo,
     })
     expect(team.id).toBeDefined()
     expect(team.ownerId).toBeDefined()
@@ -66,7 +65,7 @@ test.describe('Team Creation (Authenticated)', () => {
 
     // Create team
     const createResponse = await request.post('/api/teams', {
-      data: teamData
+      data: teamData,
     })
     expect(createResponse.status()).toBe(200)
 
@@ -96,7 +95,7 @@ test.describe('Team Creation (Authenticated)', () => {
 
     // First team creation should succeed
     const firstResponse = await request.post('/api/teams', {
-      data: teamData
+      data: teamData,
     })
     expect(firstResponse.status()).toBe(200)
 
@@ -111,7 +110,7 @@ test.describe('Team Creation (Authenticated)', () => {
     secondTeamData.slug = teamData.slug // Same slug
 
     const secondResponse = await request.post('/api/teams', {
-      data: secondTeamData
+      data: secondTeamData,
     })
     expect(secondResponse.status()).toBe(400)
   })
@@ -120,18 +119,18 @@ test.describe('Team Creation (Authenticated)', () => {
     // Missing name
     const response1 = await request.post('/api/teams', {
       data: {
-        slug: 'test-slug'
+        slug: 'test-slug',
         // Missing name
-      }
+      },
     })
     expect(response1.status()).toBe(400)
 
     // Missing slug
     const response2 = await request.post('/api/teams', {
       data: {
-        name: 'Test Team'
+        name: 'Test Team',
         // Missing slug
-      }
+      },
     })
     expect(response2.status()).toBe(400)
   })
@@ -141,7 +140,7 @@ test.describe('Team Creation (Authenticated)', () => {
     teamData.slug = 'Invalid Slug!' // Invalid characters
 
     const response = await request.post('/api/teams', {
-      data: teamData
+      data: teamData,
     })
 
     expect(response.status()).toBe(400)

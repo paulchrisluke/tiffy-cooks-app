@@ -43,15 +43,15 @@ export default defineEventHandler(async (event) => {
       and(
         eq(tables.teamInvites.teamId, teamId),
         eq(tables.teamInvites.email, body.email),
-        eq(tables.teamInvites.status, 'pending')
-      )
+        eq(tables.teamInvites.status, 'pending'),
+      ),
     )
     .get()
 
   if (existingInvite) {
     throw createError({
       statusCode: 400,
-      statusMessage: 'An invitation for this email already exists'
+      statusMessage: 'An invitation for this email already exists',
     })
   }
 

@@ -29,8 +29,8 @@ async function validateLoginResponse(loginResponse: APIResponse): Promise<void> 
   }
 
   // Split cookie header string into array and check for session cookie
-  const cookies = setCookieHeader.split(/\r?\n/).map(cookie => cookie.trim())
-  const hasSessionCookie = cookies.some(cookie => cookie.startsWith('nuxt-session='))
+  const cookies = setCookieHeader.split(/\r?\n/).map((cookie) => cookie.trim())
+  const hasSessionCookie = cookies.some((cookie) => cookie.startsWith('nuxt-session='))
 
   if (!hasSessionCookie) {
     throw new Error('Login succeeded but no session cookie was set - authentication may have failed')
@@ -39,13 +39,13 @@ async function validateLoginResponse(loginResponse: APIResponse): Promise<void> 
 
 export async function createAuthenticatedUser(
   request: APIRequestContext,
-  userData?: TestUser
+  userData?: TestUser,
 ): Promise<TestUser> {
   const user = userData || createTestUser()
 
   // Register user (auto-verified in test mode)
   const registerResponse = await request.post('/api/auth/password/register', {
-    data: user
+    data: user,
   })
 
   if (!registerResponse.ok()) {
@@ -55,7 +55,7 @@ export async function createAuthenticatedUser(
 
   // Login to establish session
   const loginResponse = await request.post('/api/auth/password/login', {
-    data: { email: user.email, password: user.password }
+    data: { email: user.email, password: user.password },
   })
 
   await validateLoginResponse(loginResponse)
@@ -77,10 +77,10 @@ export async function loadTestUser(): Promise<TestUser> {
 
 export async function loginUser(
   request: APIRequestContext,
-  user: TestUser
+  user: TestUser,
 ): Promise<void> {
   const loginResponse = await request.post('/api/auth/password/login', {
-    data: { email: user.email, password: user.password }
+    data: { email: user.email, password: user.password },
   })
 
   await validateLoginResponse(loginResponse)

@@ -14,7 +14,7 @@ export const createTestUser = (suffix?: string) => {
   return {
     email: `test-${generatedId}@example.com`,
     password: 'TestPassword123!',
-    name: `Test User ${generatedId}`
+    name: `Test User ${generatedId}`,
   }
 }
 
@@ -23,7 +23,7 @@ export const createTestTeam = (suffix?: string) => {
   return {
     name: `Test Team ${uniqueId}`,
     slug: `test-team-${uniqueId}`,
-    logo: null
+    logo: null,
   }
 }
 

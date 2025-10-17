@@ -1,5 +1,4 @@
 import { z } from 'zod'
-import { insertTeamSchema } from '@@/types/database'
 import { UserRole } from '@@/constants'
 
 export const createTeamSchema = z.object({
@@ -11,7 +10,7 @@ export const createTeamSchema = z.object({
     .regex(/^[a-z0-9-]+$/, 'Slug must contain only lowercase letters, numbers, and hyphens')
     .refine((slug) => !slug.startsWith('-') && !slug.endsWith('-'),
       'Slug cannot start or end with a hyphen')
-    .transform((s) => s.trim().toLowerCase())  // Normalize after validation
+    .transform((s) => s.trim().toLowerCase()), // Normalize after validation
 })
 
 export const updateTeamSchema = z.object({

@@ -13,17 +13,17 @@ export default defineConfig({
       '**/dist/**',
       '**/tests/e2e/**', // Exclude Playwright E2E tests
       '**/playwright-report/**',
-      '**/test-results/**'
+      '**/test-results/**',
     ],
     include: [
-      '**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'
-    ]
+      '**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}',
+    ],
   },
   resolve: {
     alias: {
       '@@': resolve(__dirname, '.'),
       '~': resolve(__dirname, '.'),
-      '@': resolve(__dirname, '.')
-    }
-  }
+      '@': resolve(__dirname, '.'),
+    },
+  },
 })
