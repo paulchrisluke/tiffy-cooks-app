@@ -19,11 +19,12 @@
             </div>
             <div v-if="teamMember.role !== 'owner'" class="pl-2.5 p-2 pb-0">
               <div class="flex items-center gap-2">
-
                 <UIcon name="i-fluent-arrow-enter-24-filled" class="flex-shrink-0 scale-x-[-1] text-sm" />
                 <p class="text-neutral-500 text-xs">Owned by</p>
-                <UAvatar :src="getTeamOwner(teamMember.team.ownerId).avatarUrl || undefined" size="3xs"
-                  :alt="getTeamOwner(teamMember.team.ownerId).name" />
+                <UAvatar
+                  :src="getTeamOwner(teamMember.team.ownerId).avatarUrl || undefined" size="3xs"
+                  :alt="getTeamOwner(teamMember.team.ownerId).name"
+                />
                 <p class="text-xs font-medium">{{ getTeamOwner(teamMember.team.ownerId).name }}</p>
               </div>
             </div>
@@ -61,7 +62,7 @@ const props = defineProps<{
   users?: User[]
 }>()
 
-function getTeamOwner(ownerId: string): { name: string; email: string, avatarUrl: string } {
+function getTeamOwner(ownerId: string): { name: string, email: string, avatarUrl: string } {
   if (!ownerId || !props.users?.length) return { name: 'Unknown', email: 'Unknown', avatarUrl: 'Unknown' }
   const owner = props.users.find((user) => user.id === ownerId)
   return { name: owner?.name || 'Unknown', email: owner?.email || 'Unknown', avatarUrl: owner?.avatarUrl || 'Unknown' }

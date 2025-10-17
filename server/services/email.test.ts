@@ -6,15 +6,15 @@ const mockSend = vi.hoisted(() => vi.fn())
 
 // Mock the email service
 vi.mock('use-email', () => ({
-  useEmail: vi.fn(() => ({ send: mockSend }))
+  useEmail: vi.fn(() => ({ send: mockSend })),
 }))
 
 // Mock the env
 vi.mock('@@/env', () => ({
   env: {
     EMAIL_PROVIDER: 'resend',
-    FROM_EMAIL: 'test@example.com'
-  }
+    FROM_EMAIL: 'test@example.com',
+  },
 }))
 
 describe('Email Service', () => {
@@ -51,7 +51,7 @@ describe('Email Service', () => {
     const emailData = {
       to: 'test@example.com',
       subject: 'Test Email',
-      text: 'This is a test email'
+      text: 'This is a test email',
     }
 
     await sendEmail(emailData)
@@ -70,7 +70,7 @@ describe('Email Service', () => {
     const emailData = {
       to: 'test@example.com',
       subject: 'Test Email',
-      text: 'This is a test email'
+      text: 'This is a test email',
     }
 
     await sendEmail(emailData)
@@ -92,7 +92,7 @@ describe('Email Service', () => {
     const emailData = {
       to: 'test@example.com',
       subject: 'Test Email',
-      text: 'This is a test email'
+      text: 'This is a test email',
     }
 
     await sendEmail(emailData)
@@ -102,7 +102,7 @@ describe('Email Service', () => {
       to: 'test@example.com',
       subject: 'Test Email',
       text: 'This is a test email',
-      html: undefined
+      html: undefined,
     })
     expect(getTestEmailCount()).toBe(0)
   })
@@ -113,13 +113,13 @@ describe('Email Service', () => {
     const email1 = {
       to: 'user1@example.com',
       subject: 'Email 1',
-      text: 'First email'
+      text: 'First email',
     }
 
     const email2 = {
       to: 'user2@example.com',
       subject: 'Email 2',
-      html: '<p>Second email</p>'
+      html: '<p>Second email</p>',
     }
 
     await sendEmail(email1)
@@ -138,7 +138,7 @@ describe('Email Service', () => {
     const emailData = {
       to: 'test@example.com',
       subject: 'Test Email',
-      text: 'This is a test email'
+      text: 'This is a test email',
     }
 
     await sendEmail(emailData)
@@ -155,7 +155,7 @@ describe('Email Service', () => {
     const emailData = {
       to: 'test@example.com',
       subject: 'HTML Email',
-      html: '<h1>Hello</h1><p>This is HTML content</p>'
+      html: '<h1>Hello</h1><p>This is HTML content</p>',
     }
 
     await sendEmail(emailData)
@@ -171,7 +171,7 @@ describe('Email Service', () => {
     const emailData = {
       to: ['user1@example.com', 'user2@example.com'],
       subject: 'Multiple Recipients',
-      text: 'Email to multiple people'
+      text: 'Email to multiple people',
     }
 
     await sendEmail(emailData)

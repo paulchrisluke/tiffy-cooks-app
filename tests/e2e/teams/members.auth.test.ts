@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test'
-import { createTestTeam, createTestUser } from '../../fixtures/test-data'
+import { createTestTeam } from '../../fixtures/test-data'
 
 test.describe('Team Members (Authenticated)', () => {
   let teamId: string
@@ -8,7 +8,7 @@ test.describe('Team Members (Authenticated)', () => {
     // Create a team for member tests
     const teamData = createTestTeam()
     const response = await request.post('/api/teams', {
-      data: teamData
+      data: teamData,
     })
     expect(response.status()).toBe(200)
 
@@ -19,13 +19,12 @@ test.describe('Team Members (Authenticated)', () => {
   test('should invite member to team', async ({ request }) => {
     const memberData = {
       email: 'member@example.com',
-      role: 'member'
+      role: 'member',
     }
 
     const response = await request.post(`/api/teams/${teamId}/members`, {
-      data: memberData
+      data: memberData,
     })
-
 
     expect(response.status()).toBe(201)
 
@@ -33,7 +32,7 @@ test.describe('Team Members (Authenticated)', () => {
     expect(invitation).toMatchObject({
       teamId: teamId,
       email: memberData.email,
-      role: memberData.role
+      role: memberData.role,
     })
     expect(invitation.id).toBeDefined()
     expect(invitation.token).toBeDefined()
@@ -64,18 +63,18 @@ test.describe('Team Members (Authenticated)', () => {
   test('should reject duplicate member invitation', async ({ request }) => {
     const memberData = {
       email: 'duplicate@example.com',
-      role: 'member'
+      role: 'member',
     }
 
     // First invitation should succeed
     const firstResponse = await request.post(`/api/teams/${teamId}/members`, {
-      data: memberData
+      data: memberData,
     })
     expect(firstResponse.status()).toBe(201)
 
     // Second invitation with same email should fail
     const secondResponse = await request.post(`/api/teams/${teamId}/members`, {
-      data: memberData
+      data: memberData,
     })
     expect(secondResponse.status()).toBe(400)
 
@@ -87,8 +86,8 @@ test.describe('Team Members (Authenticated)', () => {
     const response = await request.post(`/api/teams/${teamId}/members`, {
       data: {
         email: 'invalid-email', // Invalid email format
-        role: 'member'
-      }
+        role: 'member',
+      },
     })
 
     expect(response.status()).toBe(400)
@@ -121,11 +120,11 @@ test.describe('Team Members (Authenticated)', () => {
     // In a real scenario, we'd test with a non-owner user
     const memberData = {
       email: 'test@example.com',
-      role: 'member'
+      role: 'member',
     }
 
     const response = await request.post(`/api/teams/${teamId}/members`, {
-      data: memberData
+      data: memberData,
     })
 
     // Should succeed because we're the owner

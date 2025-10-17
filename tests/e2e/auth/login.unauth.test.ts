@@ -7,7 +7,7 @@ test.describe('User Login (Unauthenticated)', () => {
 
     // Register user first
     const registerResponse = await request.post('/api/auth/password/register', {
-      data: userData
+      data: userData,
     })
 
     // Assert registration succeeded
@@ -22,8 +22,8 @@ test.describe('User Login (Unauthenticated)', () => {
     const loginResponse = await request.post('/api/auth/password/login', {
       data: {
         email: userData.email,
-        password: userData.password
-      }
+        password: userData.password,
+      },
     })
 
     // Assert login response status
@@ -32,8 +32,8 @@ test.describe('User Login (Unauthenticated)', () => {
     // Verify that authentication was established by checking for session cookie
     const cookies = loginResponse.headers()['set-cookie']
     const cookieArray = Array.isArray(cookies) ? cookies : cookies ? [cookies] : []
-    const hasSessionCookie = cookieArray.some(cookie =>
-      cookie.includes('nuxt-session') || cookie.includes('session')
+    const hasSessionCookie = cookieArray.some((cookie) =>
+      cookie.includes('nuxt-session') || cookie.includes('session'),
     )
 
     expect(hasSessionCookie).toBe(true) // Authentication should be established
@@ -44,7 +44,7 @@ test.describe('User Login (Unauthenticated)', () => {
 
     // Register user first
     const registerResponse = await request.post('/api/auth/password/register', {
-      data: userData
+      data: userData,
     })
 
     // Assert registration succeeded
@@ -59,8 +59,8 @@ test.describe('User Login (Unauthenticated)', () => {
     const response = await request.post('/api/auth/password/login', {
       data: {
         email: userData.email,
-        password: 'wrongpassword'
-      }
+        password: 'wrongpassword',
+      },
     })
 
     expect(response.status()).toBe(400)
@@ -73,8 +73,8 @@ test.describe('User Login (Unauthenticated)', () => {
     const response = await request.post('/api/auth/password/login', {
       data: {
         email: 'nonexistent@example.com',
-        password: 'somepassword'
-      }
+        password: 'somepassword',
+      },
     })
 
     expect(response.status()).toBe(400)
@@ -86,15 +86,15 @@ test.describe('User Login (Unauthenticated)', () => {
   test('should validate login schema', async ({ request }) => {
     const response = await request.post('/api/auth/password/login', {
       data: {
-        email: 'test@example.com'
+        email: 'test@example.com',
         // Missing password
-      }
+      },
     })
 
     expect(response.status()).toBe(400)
   })
 
-  test('should reject unverified email', async ({ request }) => {
+  test('should reject unverified email', ({ request }) => {
     // This test would require a user that's not auto-verified
     // In our current setup, all users are auto-verified in test mode
     // This test documents the expected behavior for production

@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
   if (existingTeam) {
     throw createError({
       statusCode: 400,
-      statusMessage: 'A team with this slug already exists'
+      statusMessage: 'A team with this slug already exists',
     })
   }
 

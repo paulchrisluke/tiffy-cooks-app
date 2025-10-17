@@ -8,7 +8,7 @@ test.describe('Team Management (Authenticated)', () => {
     // Create a team for management tests
     const teamData = createTestTeam()
     const response = await request.post('/api/teams', {
-      data: teamData
+      data: teamData,
     })
     expect(response.status()).toBe(200)
 
@@ -39,11 +39,11 @@ test.describe('Team Management (Authenticated)', () => {
   test('should update team name and logo', async ({ request }) => {
     const updateData = {
       name: 'Updated Team Name',
-      logo: 'https://example.com/new-logo.png'
+      logo: 'https://example.com/new-logo.png',
     }
 
     const response = await request.patch(`/api/teams/${teamId}`, {
-      data: updateData
+      data: updateData,
     })
 
     expect(response.status()).toBe(200)
@@ -56,8 +56,8 @@ test.describe('Team Management (Authenticated)', () => {
   test('should reject update with invalid data', async ({ request }) => {
     const response = await request.patch(`/api/teams/${teamId}`, {
       data: {
-        name: '' // Empty name should be invalid
-      }
+        name: '', // Empty name should be invalid
+      },
     })
 
     expect(response.status()).toBe(400)
@@ -67,7 +67,7 @@ test.describe('Team Management (Authenticated)', () => {
     // Create a separate team for deletion
     const teamData = createTestTeam()
     const createResponse = await request.post('/api/teams', {
-      data: teamData
+      data: teamData,
     })
     expect(createResponse.status()).toBe(200)
 
@@ -87,7 +87,7 @@ test.describe('Team Management (Authenticated)', () => {
     const fakeTeamId = 'non-existent-id'
 
     const response = await request.patch(`/api/teams/${fakeTeamId}`, {
-      data: { name: 'Updated Name' }
+      data: { name: 'Updated Name' },
     })
 
     expect(response.status()).toBe(404)
@@ -97,7 +97,7 @@ test.describe('Team Management (Authenticated)', () => {
     // This test would require creating a team as a different user
     // For now, we'll test that the current user can manage their own team
     const response = await request.patch(`/api/teams/${teamId}`, {
-      data: { name: 'Ownership Test' }
+      data: { name: 'Ownership Test' },
     })
 
     expect(response.status()).toBe(200)

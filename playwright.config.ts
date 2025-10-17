@@ -35,7 +35,7 @@ export default defineConfig({
       name: 'authenticated',
       use: {
         ...devices['Desktop Chrome'],
-        storageState: 'tests/fixtures/auth.json'
+        storageState: 'tests/fixtures/auth.json',
       },
       testMatch: /.*\.auth\.test\.ts/,
     },
@@ -44,7 +44,7 @@ export default defineConfig({
       name: 'unauthenticated',
       use: {
         ...devices['Desktop Chrome'],
-        storageState: undefined // No auth state
+        storageState: undefined, // No auth state
       },
       testMatch: /.*\.unauth\.test\.ts/,
     },

@@ -20,8 +20,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="user in users" :key="user.id"
-            class="border-b border-neutral-100 text-sm text-neutral-500 hover:bg-neutral-50 dark:border-white/10 dark:text-neutral-400 dark:hover:bg-neutral-800/50 [&>td]:whitespace-nowrap">
+          <tr
+            v-for="user in users" :key="user.id"
+            class="border-b border-neutral-100 text-sm text-neutral-500 hover:bg-neutral-50 dark:border-white/10 dark:text-neutral-400 dark:hover:bg-neutral-800/50 [&>td]:whitespace-nowrap"
+          >
             <td class="p-2">
               <div class="flex items-center gap-2">
                 <UAvatar :src="user.avatarUrl ?? undefined" size="2xs" :alt="user.name" />
@@ -49,8 +51,10 @@
             </td>
             <td class="p-2">
               <UDropdownMenu :items="actions" :content="{ align: 'end', side: 'bottom', sideOffset: 0 }">
-                <UButton icon="i-lucide-ellipsis" variant="ghost" color="neutral" class="text-neutral-500"
-                  :loading="loadingUserId === user.id" @click="selectedUser = user" />
+                <UButton
+                  icon="i-lucide-ellipsis" variant="ghost" color="neutral" class="text-neutral-500"
+                  :loading="loadingUserId === user.id" @click="selectedUser = user"
+                />
               </UDropdownMenu>
             </td>
           </tr>
@@ -73,8 +77,10 @@
 
     <UModal v-model:open="showDeleteUserConfirmation" title="Delete User" description="This action is irreversible">
       <template #body>
-        <SuperAdminDeleteUserForm v-if="selectedUser" :user="selectedUser" :users="users"
-          @user-deleted="handleUserDeleted" @cancel="showDeleteUserConfirmation = false" />
+        <SuperAdminDeleteUserForm
+          v-if="selectedUser" :user="selectedUser" :users="users"
+          @user-deleted="handleUserDeleted" @cancel="showDeleteUserConfirmation = false"
+        />
       </template>
     </UModal>
   </AppContainer>
@@ -253,7 +259,6 @@ const maskEmail = (email: string) => {
     .map(() => '•')
     .join('')}@${domain}`
 }
-
 
 const maskEmails = () => {
   isEmailsMasked.value = !isEmailsMasked.value

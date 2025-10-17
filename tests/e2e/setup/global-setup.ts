@@ -3,7 +3,8 @@
  * Creates a shared authenticated user for all tests
  */
 
-import { chromium, FullConfig } from '@playwright/test'
+import type { FullConfig } from '@playwright/test'
+import { chromium } from '@playwright/test'
 import { testUser } from '../../fixtures/test-data'
 import fs from 'fs'
 import path from 'path'
@@ -31,7 +32,7 @@ export default async function globalSetup(config: FullConfig) {
   try {
     // Register test user (auto-verified in test mode)
     const registerResponse = await page.request.post('/api/auth/password/register', {
-      data: testUser
+      data: testUser,
     })
 
     if (registerResponse.status() !== 201) {
@@ -44,7 +45,7 @@ export default async function globalSetup(config: FullConfig) {
 
     // Login to capture session
     const loginResponse = await page.request.post('/api/auth/password/login', {
-      data: { email: testUser.email, password: testUser.password }
+      data: { email: testUser.email, password: testUser.password },
     })
 
     if (loginResponse.status() !== 204) {
@@ -63,9 +64,6 @@ export default async function globalSetup(config: FullConfig) {
     // Save test user data for reference
     const testUserPath = path.join(process.cwd(), 'tests/fixtures/test-user.json')
     await fs.promises.writeFile(testUserPath, JSON.stringify(testUser, null, 2))
-
-  } catch (error) {
-    throw error
   } finally {
     await browser.close()
   }

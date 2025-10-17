@@ -7,8 +7,10 @@
     <template #content>
       <div class="w-72 p-4">
         <div class="divide-y divide-neutral-100 dark:divide-neutral-800">
-          <div v-for="member in members" :key="member.id"
-            class="flex items-center gap-2 py-2 text-sm first:pt-0 last:pb-0">
+          <div
+            v-for="member in members" :key="member.id"
+            class="flex items-center gap-2 py-2 text-sm first:pt-0 last:pb-0"
+          >
             <UAvatar :src="member.user.avatarUrl" size="md" :alt="member.user.name" />
             <div class="flex-1">
               <div class="flex items-center gap-1">
