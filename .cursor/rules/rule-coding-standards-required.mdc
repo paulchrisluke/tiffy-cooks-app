@@ -43,12 +43,12 @@ Cursor Rules for Tiffy App
   - **Usage**: `const { user } = await requireUserSession(event)`
 
 #### Route Parameter Extraction
-- `getRouterParams(event)` - **Global function from `nuxt-auth-utils`**
+- `getRouterParams(event)` - **Global function from `h3`**
   - **Purpose**: Extracts all route parameters as an object
   - **Returns**: `Record<string, string>` (e.g., `{ id: "123", postId: "456" }`)
   - **Usage**: `const { id, postId } = getRouterParams(event)`
 
-- `getRouterParam(event, 'paramName')` - **Global function from `nuxt-auth-utils`**
+- `getRouterParam(event, 'paramName')` - **Global function from `h3`**
   - **Purpose**: Extracts a specific route parameter
   - **Returns**: `string | undefined`
   - **Usage**: `const teamId = getRouterParam(event, 'id')`
