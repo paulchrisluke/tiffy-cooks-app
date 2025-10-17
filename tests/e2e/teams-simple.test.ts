@@ -15,7 +15,7 @@ test.describe('Teams API E2E Tests', () => {
       expect(response.status()).toBe(401)
     })
 
-    test('should validate required fields', async ({ request }) => {
+    test('should require authentication even with mock session', async ({ request }) => {
       // Create a mock session cookie for testing
       const mockHeaders = {
         'Cookie': 'nuxt-session=test-user-id; Path=/; HttpOnly',
@@ -28,6 +28,7 @@ test.describe('Teams API E2E Tests', () => {
       })
 
       // Authentication is checked before validation, so we expect 401
+      // This test verifies that mock cookies don't bypass authentication
       expect(response.status()).toBe(401)
     })
   })
