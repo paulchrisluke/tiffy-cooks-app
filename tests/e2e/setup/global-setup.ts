@@ -15,7 +15,7 @@ export default async function globalSetup(config: FullConfig) {
     throw new Error('Playwright config must have at least one project defined')
   }
 
-  const firstProject = config.projects[0]
+  const firstProject = config.projects[0]!
   if (!firstProject.use?.baseURL) {
     throw new Error('Playwright config project must have baseURL defined in use configuration')
   }
