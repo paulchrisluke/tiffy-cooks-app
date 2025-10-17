@@ -4,7 +4,7 @@ import { createTestTeam } from '../../fixtures/test-data'
 test.describe('Team Management (Authenticated)', () => {
   let teamId: string
 
-  test.beforeAll(async ({ request }) => {
+  test.beforeEach(async ({ request }) => {
     // Create a team for management tests
     const teamData = createTestTeam()
     const response = await request.post('/api/teams', {
@@ -14,6 +14,12 @@ test.describe('Team Management (Authenticated)', () => {
 
     const team = await response.json()
     teamId = team.id
+  })
+
+  test.afterAll(async ({ request }) => {
+    if (teamId) {
+      await request.delete(`/api/teams/${teamId}`)
+    }
   })
 
   test('should get user teams list', async ({ request }) => {

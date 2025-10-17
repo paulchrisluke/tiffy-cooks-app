@@ -2,6 +2,24 @@ import { test, expect } from '@playwright/test'
 import { createTestTeam } from '../../fixtures/test-data'
 
 test.describe('Team Creation (Authenticated)', () => {
+  const createdTeamIds: string[] = []
+
+  test.afterEach(async ({ request }) => {
+    // Clean up created teams
+    for (const teamId of createdTeamIds) {
+      try {
+        await request.delete(`/api/teams/${teamId}`)
+      } catch (error) {
+        // Ignore not-found errors during cleanup
+        if (error instanceof Error && !error.message.includes('404')) {
+          console.warn(`Failed to delete team ${teamId}:`, error.message)
+        }
+      }
+    }
+    // Reset the array
+    createdTeamIds.length = 0
+  })
+
   test('should create team with valid data', async ({ request }) => {
     const teamData = createTestTeam()
 
@@ -20,6 +38,11 @@ test.describe('Team Creation (Authenticated)', () => {
     expect(team.id).toBeDefined()
     expect(team.ownerId).toBeDefined()
     expect(team.createdAt).toBeDefined()
+
+    // Register team for cleanup
+    if (team.id) {
+      createdTeamIds.push(team.id)
+    }
   })
 
   test('should verify team appears in user teams list', async ({ request }) => {
@@ -32,6 +55,11 @@ test.describe('Team Creation (Authenticated)', () => {
     expect(createResponse.status()).toBe(200)
 
     const createdTeam = await createResponse.json()
+
+    // Register team for cleanup
+    if (createdTeam.id) {
+      createdTeamIds.push(createdTeam.id)
+    }
 
     // Get user's teams
     const listResponse = await request.get('/api/teams')
@@ -55,6 +83,12 @@ test.describe('Team Creation (Authenticated)', () => {
       data: teamData
     })
     expect(firstResponse.status()).toBe(200)
+
+    // Register first team for cleanup
+    const firstTeam = await firstResponse.json()
+    if (firstTeam.id) {
+      createdTeamIds.push(firstTeam.id)
+    }
 
     // Second team with same slug should fail
     const secondTeamData = createTestTeam(`second-${uniqueId}`)

@@ -5,13 +5,13 @@ compatibility_flags = ["nodejs_compat"]
 
 [[kv_namespaces]]
 binding = "KV"
-id = "test-kv-namespace"
-preview_id = "test-kv-namespace"
+id = "8fba5729163846f0967492f6b31c30af"
+preview_id = "8fba5729163846f0967492f6b31c30af"
 
 [[d1_databases]]
 binding = "DB"
 database_name = "tiffy-db"
-database_id = "test-d1-database"
+database_id = "6edcf829-b7ca-4694-8f55-1d40b940ed7f"
 migrations_dir = "dist/database/migrations"
 
 [[r2_buckets]]

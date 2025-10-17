@@ -18,13 +18,13 @@ test.describe('Teams API E2E Tests', () => {
     test('should require authentication even with mock session', async ({ request }) => {
       // Create a mock session cookie for testing
       const mockHeaders = {
-        'Cookie': 'nuxt-session=test-user-id; Path=/; HttpOnly',
+        'Cookie': 'nuxt-session=test-user-id',
         'Content-Type': 'application/json',
       }
 
       const response = await request.post('/api/teams', {
         headers: mockHeaders,
-        data: { name: 'Test Team' }, // Missing slug
+        data: { name: 'Test Team', slug: 'test-team' }, // Valid team payload
       })
 
       // Authentication is checked before validation, so we expect 401

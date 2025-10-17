@@ -4,6 +4,7 @@ import type {
   InsertTeamInvite,
   TeamInvite,
 } from '@@/types/database'
+import { createError } from 'h3'
 
 // Define invite status types for better type safety
 type InviteStatus = (typeof INVALID_STATUSES)[number]
@@ -72,10 +73,19 @@ export const createTeam = async (payload: InsertTeam) => {
 
     return team
   } catch (error) {
-    if (error instanceof Error) {
-      throw new Error(error.message)
+    // Handle SQLite unique constraint violation
+    if (error instanceof Error && error.message.includes('UNIQUE constraint failed')) {
+      throw createError({
+        statusCode: 400,
+        statusMessage: 'A team with this slug already exists'
+      })
     }
-    throw new Error('Failed to create team')
+
+    console.error('Failed to create team:', error)
+    throw createError({
+      statusCode: 500,
+      statusMessage: 'Failed to create team'
+    })
   }
 }
 

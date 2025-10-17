@@ -4,13 +4,13 @@ import { createTestTeam, createTestUser } from '../../fixtures/test-data'
 test.describe('Team Members (Authenticated)', () => {
   let teamId: string
 
-  test.beforeAll(async ({ request }) => {
+  test.beforeEach(async ({ request }) => {
     // Create a team for member tests
     const teamData = createTestTeam()
     const response = await request.post('/api/teams', {
       data: teamData
     })
-    expect(response.status()).toBe(200)
+    expect(response.status()).toBe(201)
 
     const team = await response.json()
     teamId = team.id

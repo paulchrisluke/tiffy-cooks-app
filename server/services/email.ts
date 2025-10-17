@@ -1,10 +1,12 @@
 import { useEmail } from 'use-email'
+import { createError } from 'h3'
 import { env } from '@@/env'
 
 const EMAIL_PROVIDER = env.EMAIL_PROVIDER
 const emailService = useEmail(EMAIL_PROVIDER)
 
-// Email stub will be imported dynamically in test mode
+// Test double for email service - stores sent emails without logging PII
+let testEmailStore: Array<{ to: string | string[], subject: string, text?: string, html?: string }> = []
 
 export interface BaseEmailPayload {
   to: string | string[]
@@ -25,9 +27,9 @@ export type EmailPayload = TextEmailPayload | HtmlEmailPayload
 
 export async function sendEmail({ to, subject, text, html }: EmailPayload) {
   try {
-    // In test mode, just log the email instead of sending
+    // In test mode, store email data without logging PII
     if (process.env.NODE_ENV === 'test' || process.env.VITEST === 'true') {
-      console.log('TEST EMAIL:', { to, subject, text, html })
+      testEmailStore.push({ to, subject, text, html })
       return
     }
 
@@ -45,4 +47,17 @@ export async function sendEmail({ to, subject, text, html }: EmailPayload) {
       statusMessage: 'Failed to send email',
     })
   }
+}
+
+// Test utilities for email service
+export function getTestEmails() {
+  return [...testEmailStore]
+}
+
+export function clearTestEmails() {
+  testEmailStore = []
+}
+
+export function getTestEmailCount() {
+  return testEmailStore.length
 }

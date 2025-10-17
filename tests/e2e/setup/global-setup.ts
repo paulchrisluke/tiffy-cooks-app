@@ -9,7 +9,17 @@ import fs from 'fs'
 import path from 'path'
 
 export default async function globalSetup(config: FullConfig) {
-  const baseURL = config.projects[0].use.baseURL!
+  // Safely extract baseURL with proper validation
+  if (!config.projects || config.projects.length === 0) {
+    throw new Error('Playwright config must have at least one project defined')
+  }
+
+  const firstProject = config.projects[0]
+  if (!firstProject.use?.baseURL) {
+    throw new Error('Playwright config project must have baseURL defined in use configuration')
+  }
+
+  const baseURL = firstProject.use.baseURL
   const browser = await chromium.launch()
   const context = await browser.newContext({
     baseURL,
@@ -48,7 +58,10 @@ export default async function globalSetup(config: FullConfig) {
 
     // Save test user data for reference
     const testUserPath = path.join(process.cwd(), 'tests/fixtures/test-user.json')
-    fs.writeFileSync(testUserPath, JSON.stringify(testUser, null, 2))
+
+    // Ensure directory exists before writing files
+    await fs.promises.mkdir(path.dirname(testUserPath), { recursive: true })
+    await fs.promises.writeFile(testUserPath, JSON.stringify(testUser, null, 2))
 
   } catch (error) {
     throw error

@@ -9,11 +9,14 @@ const generateUniqueId = (prefix = 'test') => {
   return `${prefix}-${timestamp}-${random}`
 }
 
-export const createTestUser = (suffix?: string) => ({
-  email: `test-${suffix || generateUniqueId('user')}@example.com`,
-  password: 'TestPassword123!',
-  name: `Test User ${suffix || generateUniqueId('user')}`
-})
+export const createTestUser = (suffix?: string) => {
+  const generatedId = suffix || generateUniqueId('user')
+  return {
+    email: `test-${generatedId}@example.com`,
+    password: 'TestPassword123!',
+    name: `Test User ${generatedId}`
+  }
+}
 
 export const createTestTeam = (suffix?: string) => {
   const uniqueId = suffix || generateUniqueId('team')

@@ -37,10 +37,11 @@ Cursor Rules for Tiffy App
 
 #### Authentication & Session Management
 - `requireUserSession(event)` - **Global function from `nuxt-auth-utils`**
-  - **Purpose**: Validates user session and returns authenticated user
-  - **Returns**: `{ user: SanitizedUser }`
+  - **Purpose**: Validates user session and returns encrypted session object
+  - **Returns**: Encrypted session object (verify shape against your Nuxt config's User/UserSession type definitions)
   - **Throws**: 401 error if no valid session
-  - **Usage**: `const { user } = await requireUserSession(event)`
+  - **Usage**: `const session = await requireUserSession(event)`
+  - **Note**: Access user properties via `session.user` or `session.<property>` depending on your session structure
 
 #### Route Parameter Extraction
 - `getRouterParams(event)` - **Global function from `h3`**

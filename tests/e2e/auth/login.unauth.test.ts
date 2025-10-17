@@ -6,28 +6,53 @@ test.describe('User Login (Unauthenticated)', () => {
     const userData = createTestUser()
 
     // Register user first
-    await request.post('/api/auth/password/register', {
+    const registerResponse = await request.post('/api/auth/password/register', {
       data: userData
     })
 
+    // Assert registration succeeded
+    expect(registerResponse.status()).toBe(201) // Created status on successful registration
+
+    // Parse registration response to ensure user was created
+    const registeredUser = await registerResponse.json()
+    expect(registeredUser).toHaveProperty('id')
+    expect(registeredUser.email).toBe(userData.email)
+
     // Login should succeed
-    const response = await request.post('/api/auth/password/login', {
+    const loginResponse = await request.post('/api/auth/password/login', {
       data: {
         email: userData.email,
         password: userData.password
       }
     })
 
-    expect(response.status()).toBe(204) // No content on successful login
+    // Assert login response status
+    expect(loginResponse.status()).toBe(204) // No content on successful login
+
+    // Verify that authentication was established by checking for session cookie
+    const cookies = loginResponse.headers()['set-cookie']
+    const hasSessionCookie = cookies?.some(cookie =>
+      cookie.includes('nuxt-session') || cookie.includes('session')
+    )
+
+    expect(hasSessionCookie).toBe(true) // Authentication should be established
   })
 
   test('should reject invalid password', async ({ request }) => {
     const userData = createTestUser()
 
     // Register user first
-    await request.post('/api/auth/password/register', {
+    const registerResponse = await request.post('/api/auth/password/register', {
       data: userData
     })
+
+    // Assert registration succeeded
+    expect(registerResponse.status()).toBe(201)
+
+    // Parse registration response to ensure user was created
+    const registeredUser = await registerResponse.json()
+    expect(registeredUser).toHaveProperty('id')
+    expect(registeredUser.email).toBe(userData.email)
 
     // Login with wrong password should fail
     const response = await request.post('/api/auth/password/login', {
@@ -40,7 +65,7 @@ test.describe('User Login (Unauthenticated)', () => {
     expect(response.status()).toBe(400)
 
     const error = await response.json()
-    expect(error.statusMessage).toContain('Invalid password')
+    expect(error.message).toContain('Invalid password')
   })
 
   test('should reject non-existent user', async ({ request }) => {
@@ -54,7 +79,7 @@ test.describe('User Login (Unauthenticated)', () => {
     expect(response.status()).toBe(400)
 
     const error = await response.json()
-    expect(error.statusMessage).toContain('User not found')
+    expect(error.message).toContain('User not found')
   })
 
   test('should validate login schema', async ({ request }) => {

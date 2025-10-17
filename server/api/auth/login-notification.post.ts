@@ -17,7 +17,7 @@ export default defineEventHandler(async (event) => {
   const city = event.context.cf?.city || 'Unknown'
   const country = event.context.cf?.country || 'Unknown'
 
-  // Only send email if we have location information
+  // Send email; include location details when available
   try {
     const htmlTemplate = await render(LoginNotification, {
       userName: user.name,
