@@ -38,8 +38,6 @@ export default defineNuxtConfig({
     experimental: {
       tasks: true,
     },
-    // Disable minification for test builds to avoid Rollup/Terser conflicts
-    minify: process.env.NODE_ENV !== 'test',
   },
   hub: {
     database: true,
