@@ -24,7 +24,7 @@ export default defineNuxtConfig({
       maxAge: 60 * 60 * 24 * 7, // Session expires after 7 days - change it accordingly
       cookie: {
         secure: process.env.NUXT_SESSION_COOKIE_SECURE !== 'false', // false in test mode
-        sameSite: process.env.NUXT_SESSION_COOKIE_SAME_SITE || 'lax',
+        sameSite: (process.env.NUXT_SESSION_COOKIE_SAME_SITE as 'none' | 'lax' | 'strict') || 'lax',
         path: '/',
       },
     },
@@ -71,6 +71,10 @@ export default defineNuxtConfig({
   },
   nuxtHubRateLimit: {
     routes: {
+      '/api/auth/oauth/*': {
+        maxRequests: 1000,
+        intervalSeconds: 60,
+      },
       '/api/auth/*': {
         maxRequests: 15,
         intervalSeconds: 60, // Minimum 60 seconds due to NuxtHub KV TTL limitation

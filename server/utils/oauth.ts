@@ -19,7 +19,7 @@ import {
   updateUser,
   linkOAuthAccount,
 } from '@@/server/database/queries/users'
-import { sendLoginNotification } from '@@/server/utils/auth'
+import { sendLoginNotification, sanitizeUser } from '@@/server/utils/auth'
 import type { H3Event } from 'h3'
 
 export interface OAuthUserData {
