@@ -33,6 +33,112 @@ Cursor Rules for Tiffy App
 - **ALWAYS** return consistent error responses
 - **ALWAYS** use `getRouterParams(event)` or `getRouterParam(event, 'paramName')` for route parameters
 
+### 3.1. Required Utility Functions & Import Paths
+
+#### Authentication & Session Management
+- `requireUserSession(event)` - **Global function from `nuxt-auth-utils`**
+  - **Purpose**: Validates user session and returns authenticated user
+  - **Returns**: `{ user: SanitizedUser }`
+  - **Throws**: 401 error if no valid session
+  - **Usage**: `const { user } = await requireUserSession(event)`
+
+#### Route Parameter Extraction
+- `getRouterParams(event)` - **Global function from `nuxt-auth-utils`**
+  - **Purpose**: Extracts all route parameters as an object
+  - **Returns**: `Record<string, string>` (e.g., `{ id: "123", postId: "456" }`)
+  - **Usage**: `const { id, postId } = getRouterParams(event)`
+
+- `getRouterParam(event, 'paramName')` - **Global function from `nuxt-auth-utils`**
+  - **Purpose**: Extracts a specific route parameter
+  - **Returns**: `string | undefined`
+  - **Usage**: `const teamId = getRouterParam(event, 'id')`
+
+#### Request Body Validation
+- `validateBody(event, schema)` - **Import from `@@/server/utils/bodyValidation`**
+  - **Purpose**: Validates request body against Zod schema
+  - **Returns**: Parsed and validated data
+  - **Throws**: 400 error with validation details if invalid
+  - **Usage**: `const data = await validateBody(event, mySchema)`
+
+#### Team Authorization
+- `validateTeamOwnership(event, teamId)` - **Import from `@@/server/utils/teamValidation`**
+  - **Purpose**: Validates user is owner of specified team
+  - **Returns**: `{ user: SanitizedUser, team: Team }`
+  - **Throws**: 400/403/404 errors for invalid team or insufficient permissions
+  - **Usage**: `const { user, team } = await validateTeamOwnership(event, teamId)`
+
+- `isTeamMember(teamId, userId)` - **Import from `@@/server/database/queries/teams`**
+  - **Purpose**: Checks if user is a member of the team
+  - **Returns**: `boolean`
+  - **Throws**: 500 error on database failure
+  - **Usage**: `const hasAccess = await isTeamMember(teamId, user.id)`
+
+#### Error Handling
+- `createError(options)` - **Import from `h3`**
+  - **Purpose**: Creates standardized HTTP errors
+  - **Returns**: Throws H3Error
+  - **Usage**: `throw createError({ statusCode: 400, statusMessage: 'Invalid input' })`
+
+### 3.2. Required Import Statements
+
+Add these imports to your API endpoint files:
+
+```typescript
+// For body validation
+import { validateBody } from '@@/server/utils/bodyValidation'
+
+// For team authorization
+import { validateTeamOwnership } from '@@/server/utils/teamValidation'
+import { isTeamMember } from '@@/server/database/queries/teams'
+
+// For error handling
+import { createError } from 'h3'
+
+// Global functions (no import needed - provided by nuxt-auth-utils):
+// - requireUserSession(event)
+// - getRouterParams(event)
+// - getRouterParam(event, 'paramName')
+```
+
+### 3.3. Complete API Endpoint Example
+
+Here's a complete example showing all utilities working together:
+
+```typescript
+// server/api/teams/[id]/posts/index.post.ts
+import { validateBody } from '@@/server/utils/bodyValidation'
+import { validateTeamOwnership } from '@@/server/utils/teamValidation'
+import { createPost } from '@@/server/database/queries/posts'
+import { createError } from 'h3'
+import { createPostSchema } from '@@/shared/validations/posts'
+
+export default defineEventHandler(async (event) => {
+  // 1. Extract route parameters
+  const { id: teamId } = getRouterParams(event)
+
+  // 2. Validate user session and team ownership
+  const { user, team } = await validateTeamOwnership(event, teamId)
+
+  // 3. Validate request body
+  const data = await validateBody(event, createPostSchema)
+
+  // 4. Create post with proper error handling
+  try {
+    const post = await createPost({
+      ...data,
+      teamId,
+      authorId: user.id,
+    })
+    return post
+  } catch (error) {
+    throw createError({
+      statusCode: 500,
+      statusMessage: 'Failed to create post',
+    })
+  }
+})
+```
+
 ### 4. Form and Validation Patterns
 - **ALWAYS** use Zod schemas for validation in both composables and API endpoints
 - **ALWAYS** use `UForm` components with reactive state
