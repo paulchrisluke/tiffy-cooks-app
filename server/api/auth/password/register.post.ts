@@ -67,6 +67,12 @@ export default defineEventHandler(async (event) => {
   })
   const sanitizedUser = sanitizeUser(user)
 
+  // 4.5. Auto-verify in test mode to skip email verification
+  if (env.MOCK_EMAIL) {
+    await verifyUser(user.id)
+    sanitizedUser.emailVerified = true
+  }
+
   // 5. Automatically verify email if a valid invite code is present
   if (data.inviteToken) {
     try {

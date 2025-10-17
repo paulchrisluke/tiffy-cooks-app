@@ -6,7 +6,9 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: 1, // Single worker to avoid DB conflicts
-  reporter: 'html',
+  reporter: process.env.CI ? [['html', { open: 'never' }]] : [['list']],
+
+  globalSetup: './tests/e2e/setup/global-setup.ts',
 
   use: {
     baseURL: process.env.PLAYWRIGHT_BASE_URL || 'http://127.0.0.1:8787',
@@ -21,13 +23,30 @@ export default defineConfig({
     timeout: 120_000, // 2 minutes for build + startup
     env: {
       NODE_ENV: 'test',
+      MOCK_EMAIL: 'true',
+      NUXT_SESSION_COOKIE_SECURE: 'false',
+      NUXT_SESSION_COOKIE_SAME_SITE: 'lax',
     },
   },
 
   projects: [
+    // Authenticated tests (default)
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: 'authenticated',
+      use: {
+        ...devices['Desktop Chrome'],
+        storageState: 'tests/fixtures/auth.json'
+      },
+      testMatch: /.*\.auth\.test\.ts/,
+    },
+    // Unauthenticated tests
+    {
+      name: 'unauthenticated',
+      use: {
+        ...devices['Desktop Chrome'],
+        storageState: undefined // No auth state
+      },
+      testMatch: /.*\.unauth\.test\.ts/,
     },
   ],
 })

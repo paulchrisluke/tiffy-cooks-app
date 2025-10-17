@@ -12,6 +12,7 @@ preview_id = "test-kv-namespace"
 binding = "DB"
 database_name = "tiffy-db"
 database_id = "test-d1-database"
+migrations_dir = "dist/database/migrations"
 
 [[r2_buckets]]
 binding = "BLOB"

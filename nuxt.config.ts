@@ -22,6 +22,11 @@ export default defineNuxtConfig({
     // @ts-expect-error - We're just extending the type
     session: {
       maxAge: 60 * 60 * 24 * 7, // Session expires after 7 days - change it accordingly
+      cookie: {
+        secure: process.env.NUXT_SESSION_COOKIE_SECURE !== 'false', // false in test mode
+        sameSite: process.env.NUXT_SESSION_COOKIE_SAME_SITE || 'lax',
+        path: '/',
+      },
     },
     public: {
       host: process.env.BASE_URL,

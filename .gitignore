@@ -29,4 +29,14 @@ logs
 test-results/
 playwright-report/
 
+# Test artifacts
+tests/fixtures/auth.json
+tests/fixtures/test-user.json
+tests/fixtures/*.json
+.wrangler/state/
+
+# Test coverage
+coverage/
+*.lcov
+
 /server/database/migrations/**

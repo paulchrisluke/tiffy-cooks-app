@@ -1,5 +1,5 @@
 import { updateTeam, findUserTeams } from '@@/server/database/queries/teams'
-import { createTeamSchema } from '@@/shared/validations/team'
+import { updateTeamSchema } from '@@/shared/validations/team'
 import { validateBody } from '@@/server/utils/bodyValidation'
 
 export default defineEventHandler(async (event) => {
@@ -15,7 +15,7 @@ export default defineEventHandler(async (event) => {
   }
 
   // 2. Validate request body
-  const body = await validateBody(event, createTeamSchema)
+  const body = await validateBody(event, updateTeamSchema)
 
   // 3. Get user's teams to check ownership
   const userTeams = await findUserTeams(user.id)

@@ -14,8 +14,8 @@ export default defineEventHandler(async (event) => {
   }
 
   // Get location information from Cloudflare headers if available
-  const city = event.context.cf.city
-  const country = event.context.cf.country
+  const city = event.context.cf?.city || 'Unknown'
+  const country = event.context.cf?.country || 'Unknown'
 
   // Only send email if we have location information
   try {

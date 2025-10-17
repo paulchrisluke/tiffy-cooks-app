@@ -1,0 +1,99 @@
+import { test, expect } from '@playwright/test'
+import { createTestTeam } from '../../fixtures/test-data'
+
+test.describe('Team Creation (Authenticated)', () => {
+  test('should create team with valid data', async ({ request }) => {
+    const teamData = createTestTeam()
+
+    const response = await request.post('/api/teams', {
+      data: teamData
+    })
+
+    expect(response.status()).toBe(200)
+
+    const team = await response.json()
+    expect(team).toMatchObject({
+      name: teamData.name,
+      slug: teamData.slug,
+      logo: teamData.logo
+    })
+    expect(team.id).toBeDefined()
+    expect(team.ownerId).toBeDefined()
+    expect(team.createdAt).toBeDefined()
+  })
+
+  test('should verify team appears in user teams list', async ({ request }) => {
+    const teamData = createTestTeam()
+
+    // Create team
+    const createResponse = await request.post('/api/teams', {
+      data: teamData
+    })
+    expect(createResponse.status()).toBe(200)
+
+    const createdTeam = await createResponse.json()
+
+    // Get user's teams
+    const listResponse = await request.get('/api/teams')
+    expect(listResponse.status()).toBe(200)
+
+    const teams = await listResponse.json()
+    expect(teams).toBeInstanceOf(Array)
+    expect(teams.length).toBeGreaterThan(0)
+
+    const foundTeam = teams.find((t: any) => t.id === createdTeam.id)
+    expect(foundTeam).toBeDefined()
+    expect(foundTeam.name).toBe(teamData.name)
+  })
+
+  test('should reject duplicate slug', async ({ request }) => {
+    const uniqueId = Date.now() + Math.floor(Math.random() * 1000)
+    const teamData = createTestTeam(`first-${uniqueId}`)
+
+    // First team creation should succeed
+    const firstResponse = await request.post('/api/teams', {
+      data: teamData
+    })
+    expect(firstResponse.status()).toBe(200)
+
+    // Second team with same slug should fail
+    const secondTeamData = createTestTeam(`second-${uniqueId}`)
+    secondTeamData.slug = teamData.slug // Same slug
+
+    const secondResponse = await request.post('/api/teams', {
+      data: secondTeamData
+    })
+    expect(secondResponse.status()).toBe(400)
+  })
+
+  test('should validate required fields', async ({ request }) => {
+    // Missing name
+    const response1 = await request.post('/api/teams', {
+      data: {
+        slug: 'test-slug'
+        // Missing name
+      }
+    })
+    expect(response1.status()).toBe(400)
+
+    // Missing slug
+    const response2 = await request.post('/api/teams', {
+      data: {
+        name: 'Test Team'
+        // Missing slug
+      }
+    })
+    expect(response2.status()).toBe(400)
+  })
+
+  test('should validate slug format', async ({ request }) => {
+    const teamData = createTestTeam()
+    teamData.slug = 'Invalid Slug!' // Invalid characters
+
+    const response = await request.post('/api/teams', {
+      data: teamData
+    })
+
+    expect(response.status()).toBe(400)
+  })
+})
