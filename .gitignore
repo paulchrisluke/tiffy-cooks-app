@@ -23,8 +23,10 @@ logs
 .env
 .env.*
 !.env.example
+.dev.vars
 
 # Test results
 test-results/
+playwright-report/
 
 /server/database/migrations/**
