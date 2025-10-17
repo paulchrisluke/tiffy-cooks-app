@@ -13,7 +13,7 @@ export const teams = sqliteTable('teams', {
     .notNull()
     .references(() => users.id, { onDelete: 'cascade' }),
   logo: text('logo'),
-  slug: text('slug').notNull().unique(),
+  slug: text('slug').notNull().unique(), // Only UNIQUE constraint on teams table
   createdAt: integer('created_at', { mode: 'timestamp' }).notNull().$default(
     () => new Date(),
   ),

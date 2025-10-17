@@ -2,13 +2,39 @@
  * Authentication helper functions for E2E tests
  */
 
-import type { APIRequestContext } from '@playwright/test'
+import type { APIRequestContext, APIResponse } from '@playwright/test'
 import { createTestUser } from './test-data'
 
 export interface TestUser {
   email: string
   password: string
   name: string
+}
+
+/**
+ * Validates a login response by checking HTTP status and session cookie
+ */
+async function validateLoginResponse(loginResponse: APIResponse): Promise<void> {
+  // Validate HTTP status is successful (2xx)
+  if (!loginResponse.ok()) {
+    const body = await loginResponse.text()
+    throw new Error(`User login failed with status ${loginResponse.status()}: ${body}`)
+  }
+
+  // Verify that a session cookie was set (indicates successful authentication)
+  const setCookieHeader = loginResponse.headers()['set-cookie']
+
+  if (!setCookieHeader) {
+    throw new Error('Login succeeded but no session cookie was set - authentication may have failed')
+  }
+
+  // Split cookie header string into array and check for session cookie
+  const cookies = setCookieHeader.split(/\r?\n/).map(cookie => cookie.trim())
+  const hasSessionCookie = cookies.some(cookie => cookie.startsWith('nuxt-session='))
+
+  if (!hasSessionCookie) {
+    throw new Error('Login succeeded but no session cookie was set - authentication may have failed')
+  }
 }
 
 export async function createAuthenticatedUser(
@@ -32,21 +58,7 @@ export async function createAuthenticatedUser(
     data: { email: user.email, password: user.password }
   })
 
-  // Validate HTTP status is successful (2xx)
-  if (!loginResponse.ok()) {
-    const body = await loginResponse.text()
-    throw new Error(`User login failed with status ${loginResponse.status()}: ${body}`)
-  }
-
-  // Verify that a session cookie was set (indicates successful authentication)
-  const cookies = loginResponse.headers()['set-cookie']
-  const hasSessionCookie = cookies?.some(cookie =>
-    cookie.startsWith('nuxt-session=')
-  )
-
-  if (!hasSessionCookie) {
-    throw new Error('Login succeeded but no session cookie was set - authentication may have failed')
-  }
+  await validateLoginResponse(loginResponse)
 
   return user
 }
@@ -71,19 +83,5 @@ export async function loginUser(
     data: { email: user.email, password: user.password }
   })
 
-  // Validate HTTP status is successful (2xx)
-  if (!loginResponse.ok()) {
-    const body = await loginResponse.text()
-    throw new Error(`User login failed with status ${loginResponse.status()}: ${body}`)
-  }
-
-  // Verify that a session cookie was set (indicates successful authentication)
-  const cookies = loginResponse.headers()['set-cookie']
-  const hasSessionCookie = cookies?.some(cookie =>
-    cookie.startsWith('nuxt-session=')
-  )
-
-  if (!hasSessionCookie) {
-    throw new Error('Login succeeded but no session cookie was set - authentication may have failed')
-  }
+  await validateLoginResponse(loginResponse)
 }

@@ -7,13 +7,28 @@ test.describe('Team Creation (Authenticated)', () => {
   test.afterEach(async ({ request }) => {
     // Clean up created teams
     for (const teamId of createdTeamIds) {
-      try {
-        await request.delete(`/api/teams/${teamId}`)
-      } catch (error) {
-        // Ignore not-found errors during cleanup
-        if (error instanceof Error && !error.message.includes('404')) {
-          console.warn(`Failed to delete team ${teamId}:`, error.message)
+      const res = await request.delete(`/api/teams/${teamId}`)
+
+      // Treat 404 as a no-op (team already deleted)
+      if (res.status() === 404) {
+        continue
+      }
+
+      // Log warning for any non-2xx statuses
+      if (res.status() < 200 || res.status() >= 300) {
+        let errorDetails = ''
+        try {
+          const contentType = res.headers()['content-type']
+          if (contentType?.includes('application/json')) {
+            const errorBody = await res.json()
+            errorDetails = JSON.stringify(errorBody)
+          } else {
+            errorDetails = await res.text()
+          }
+        } catch {
+          errorDetails = 'Unable to parse error response'
         }
+        console.warn(`Failed to delete team ${teamId}: status ${res.status()}, details: ${errorDetails}`)
       }
     }
     // Reset the array
@@ -26,6 +41,7 @@ test.describe('Team Creation (Authenticated)', () => {
     const response = await request.post('/api/teams', {
       data: teamData
     })
+
 
     expect(response.status()).toBe(200)
 

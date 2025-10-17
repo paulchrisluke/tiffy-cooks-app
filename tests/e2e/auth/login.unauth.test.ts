@@ -31,7 +31,8 @@ test.describe('User Login (Unauthenticated)', () => {
 
     // Verify that authentication was established by checking for session cookie
     const cookies = loginResponse.headers()['set-cookie']
-    const hasSessionCookie = cookies?.some(cookie =>
+    const cookieArray = Array.isArray(cookies) ? cookies : cookies ? [cookies] : []
+    const hasSessionCookie = cookieArray.some(cookie =>
       cookie.includes('nuxt-session') || cookie.includes('session')
     )
 

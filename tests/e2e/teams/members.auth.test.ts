@@ -10,7 +10,7 @@ test.describe('Team Members (Authenticated)', () => {
     const response = await request.post('/api/teams', {
       data: teamData
     })
-    expect(response.status()).toBe(201)
+    expect(response.status()).toBe(200)
 
     const team = await response.json()
     teamId = team.id
@@ -25,6 +25,7 @@ test.describe('Team Members (Authenticated)', () => {
     const response = await request.post(`/api/teams/${teamId}/members`, {
       data: memberData
     })
+
 
     expect(response.status()).toBe(201)
 

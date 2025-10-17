@@ -52,15 +52,16 @@ export default async function globalSetup(config: FullConfig) {
       throw new Error(`Login failed: ${loginResponse.status()} - ${errorText}`)
     }
 
+    // Ensure directory exists before writing files
+    const fixturesDir = path.join(process.cwd(), 'tests/fixtures')
+    await fs.promises.mkdir(fixturesDir, { recursive: true })
+
     // Save auth state for authenticated tests
     const authPath = path.join(process.cwd(), 'tests/fixtures/auth.json')
     await context.storageState({ path: authPath })
 
     // Save test user data for reference
     const testUserPath = path.join(process.cwd(), 'tests/fixtures/test-user.json')
-
-    // Ensure directory exists before writing files
-    await fs.promises.mkdir(path.dirname(testUserPath), { recursive: true })
     await fs.promises.writeFile(testUserPath, JSON.stringify(testUser, null, 2))
 
   } catch (error) {

@@ -5,6 +5,7 @@ import type {
   TeamInvite,
 } from '@@/types/database'
 import { createError } from 'h3'
+import { isUniqueConstraintError, extractUniqueConstraintField, createUniqueConstraintError } from '@@/server/utils/databaseErrors'
 
 // Define invite status types for better type safety
 type InviteStatus = (typeof INVALID_STATUSES)[number]
@@ -73,18 +74,24 @@ export const createTeam = async (payload: InsertTeam) => {
 
     return team
   } catch (error) {
-    // Handle SQLite unique constraint violation
-    if (error instanceof Error && error.message.includes('UNIQUE constraint failed')) {
-      throw createError({
-        statusCode: 400,
-        statusMessage: 'A team with this slug already exists'
-      })
+    // Handle unique constraint violations with database-agnostic detection
+    if (isUniqueConstraintError(error)) {
+      const fieldName = extractUniqueConstraintField(error)
+
+      // Since we know from the schema that only 'slug' has a UNIQUE constraint,
+      // we can be specific about the error message
+      if (fieldName === 'slug') {
+        createUniqueConstraintError('slug')
+      } else {
+        // Fallback for cases where we can't determine the field
+        createUniqueConstraintError()
+      }
     }
 
     console.error('Failed to create team:', error)
     throw createError({
       statusCode: 500,
-      statusMessage: 'Failed to create team'
+      statusMessage: 'Failed to create team',
     })
   }
 }
