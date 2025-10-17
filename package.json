@@ -54,7 +54,7 @@
     "@vueuse/nuxt": "13.3.0",
     "dotenv": "^16.5.0",
     "drizzle-kit": "0.31.1",
-    "happy-dom": "^18.0.1",
+    "happy-dom": "^20.0.2",
     "jsonc-eslint-parser": "^2.4.0",
     "nuxi": "^3.25.1",
     "nuxthub-ratelimit": "^1.0.4",
