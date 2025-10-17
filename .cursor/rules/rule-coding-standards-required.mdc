@@ -1,0 +1,39 @@
+---
+alwaysApply: true
+---
+
+## Core Architecture Principles
+
+### 1. Composables First - Never Direct API Calls in Components
+- **ALWAYS** create composables for data operations (`usePosts`, `useTeam`, `useAuth`)
+- **NEVER** put `$fetch` or API endpoints directly in Vue components
+- Composables handle: API calls, loading states, error handling, form validation
+- Components only consume composable interfaces
+
+### 2. Database Query Organization
+- **ALWAYS** put database operations in `/server/database/queries/[domain].ts`
+- **NEVER** put raw SQL or database calls in API endpoints
+- Follow existing patterns: `getAllPosts`, `createPost`, `updatePost`, `deletePost`
+- **ALWAYS** include proper error handling with `createError`
+- **ALWAYS** include authorization checks (team membership, ownership)
+
+### 3. API Endpoint Structure & File Naming
+- **ALWAYS** use file-based routing with specific naming patterns:
+  - `index.get.ts` - GET requests to collection endpoints (e.g., `/api/teams/[id]/posts`)
+  - `index.post.ts` - POST requests to collection endpoints (e.g., `/api/teams/[id]/posts`)
+  - `[id].get.ts` - GET requests to specific resource (e.g., `/api/teams/[id]/posts/[postId]`)
+  - `[id].patch.ts` - PATCH requests to specific resource
+  - `[id].delete.ts` - DELETE requests to specific resource
+  - `[id].post.ts` - POST requests to specific resource
+  - `action.post.ts` - Custom actions (e.g., `check-slug.post.ts`, `upload-image.post.ts`)
+- **ALWAYS** validate request body with Zod schemas using `validateBody`
+- **ALWAYS** require user session with `requireUserSession(event)`
+- **ALWAYS** check team ownership with `validateTeamOwnership` or `isTeamMember`
+- **ALWAYS** return consistent error responses
+- **ALWAYS** use `getRouterParams(event)` or `getRouterParam(event, 'paramName')` for route parameters
+
+### 4. Form and Validation Patterns
+- **ALWAYS** use Zod schemas for validation in both composables and API endpoints
+- **ALWAYS** use `UForm` components with reactive state
+- **ALWAYS** handle form submission in composables, not components
+- **ALWAYS** show loading states and success/error toasts
