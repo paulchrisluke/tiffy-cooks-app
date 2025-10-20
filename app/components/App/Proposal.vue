@@ -26,7 +26,7 @@
       <!-- Content Blocks -->
       <div v-for="block in section.blocks" :key="block.id" class="mb-8">
         <!-- Simple text (no card) -->
-        <div v-if="'text' in block && !('list' in block)">
+        <div v-if="block && block.type === 'text'">
           <h3 v-if="block.heading" class="text-xl font-semibold mb-4">{{ block.heading }}</h3>
           <p class="text-base text-neutral-600 dark:text-neutral-300 leading-relaxed">
             {{ block.text }}
