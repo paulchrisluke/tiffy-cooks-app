@@ -17,10 +17,10 @@
       <div class="relative">
         <div class="bg-white dark:bg-neutral-800 rounded-2xl shadow-2xl p-8 mx-auto max-w-sm">
           <div class="space-y-4">
-            <div class="h-4 bg-primary-200 dark:bg-primary-800 rounded w-3/4"></div>
-            <div class="h-3 bg-neutral-200 dark:bg-neutral-700 rounded w-full"></div>
-            <div class="h-3 bg-neutral-200 dark:bg-neutral-700 rounded w-5/6"></div>
-            <div class="h-8 bg-primary-100 dark:bg-primary-900 rounded w-full"></div>
+            <div class="h-4 bg-primary-200 dark:bg-primary-800 rounded w-3/4" />
+            <div class="h-3 bg-neutral-200 dark:bg-neutral-700 rounded w-full" />
+            <div class="h-3 bg-neutral-200 dark:bg-neutral-700 rounded w-5/6" />
+            <div class="h-8 bg-primary-100 dark:bg-primary-900 rounded w-full" />
           </div>
         </div>
 
