@@ -1,2 +1,12 @@
 @import 'tailwindcss' theme(static);
 @import '@nuxt/ui';
+
+/* Ensure scroll snap works properly */
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+main {
+  scroll-behavior: smooth;
+}

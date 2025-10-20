@@ -4,12 +4,9 @@
       <h2 class="text-3xl md:text-5xl font-bold text-neutral-900 dark:text-white mb-8">
         The Vision
       </h2>
-      <p class="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6">
-        This isn’t another project.<br>
-        It’s the next layer of what you’ve already built —
-      </p>
       <p class="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed mb-8">
-        a place where creators learn from your journey, share their own, and connect with you and each other.
+        This isn't another project.<br>
+        It's the next layer of what you've already built — a place where creators learn from your journey, share their own, and connect with you and each other.
       </p>
       <div class="text-base md:text-lg text-neutral-500 dark:text-neutral-400">
         <p class="font-medium">Built by PCL Labs. Designed by Julia.</p>

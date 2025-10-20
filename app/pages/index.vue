@@ -48,7 +48,7 @@
       </WebsiteSection>
     </header>
 
-    <main class="snap-y snap-mandatory">
+    <main class="h-screen snap-y snap-mandatory overflow-y-auto">
       <WelcomeContainer>
         <WelcomeHeyTiffy />
         <WelcomeTheVision />
