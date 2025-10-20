@@ -30,7 +30,7 @@
 </template>
 
 <script setup lang="ts">
-import * as z from 'zod'
+import type * as z from 'zod'
 import type { FormSubmitEvent } from '@nuxt/ui'
 import { meetingRequestSchema } from '@@/shared/validations/meeting'
 
@@ -61,7 +61,15 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     // Clear form
     state.message = ''
   } catch (error) {
-    console.error(error)
+    // Production-safe error logging
+    const errorMessage = error instanceof Error ? error.message : 'An error occurred while submitting the meeting request'
+    console.error(errorMessage)
+
+    // Log full error details only in development
+    if (process.env.NODE_ENV !== 'production') {
+      console.error('Full error details:', error)
+    }
+
     toast.add({
       title: 'Error',
       description: 'Something went wrong. Please try again.',

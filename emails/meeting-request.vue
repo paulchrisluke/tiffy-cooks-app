@@ -11,6 +11,7 @@ import {
   Section,
   Text,
 } from '@vue-email/components'
+import { env } from '@@/env'
 
 defineProps<{
   userName: string
@@ -27,7 +28,7 @@ defineProps<{
     <Body style="background-color: #f6f9fc; font-family: sans-serif;">
       <Container style="margin: 0 auto; padding: 20px 0 48px; max-width: 560px;">
         <Img
-          src="/logo.png"
+          :src="env.LOGO_URL"
           width="42"
           height="42"
           alt="TiffyCooks"
@@ -99,7 +100,7 @@ defineProps<{
 
         <Section style="margin: 30px 0; text-align: center;">
           <Link
-            href="mailto:{{ userEmail }}"
+            :href="`mailto:${userEmail}`"
             style="
               background-color: #007ee6;
               border-radius: 4px;

@@ -15,9 +15,9 @@
 
       <!-- Device icons -->
       <div class="flex justify-center gap-6">
-        <div class="text-4xl">📱</div>
-        <div class="text-4xl">💻</div>
-        <div class="text-4xl">📟</div>
+        <div class="text-4xl" role="img" aria-label="smartphone">📱</div>
+        <div class="text-4xl" role="img" aria-label="laptop">💻</div>
+        <div class="text-4xl" role="img" aria-label="pager">📟</div>
       </div>
     </div>
   </section>

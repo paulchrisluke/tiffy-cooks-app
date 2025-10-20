@@ -59,7 +59,7 @@
 
         <!-- Tables in cards -->
         <AppProposalTable
-          v-if="'type' in block && (block.type === 'revenue' || block.type === 'timeline' || block.type === 'financial-terms')"
+          v-else-if="'type' in block && (block.type === 'revenue' || block.type === 'timeline' || block.type === 'financial-terms')"
           :type="block.type"
           :data="block.data"
           :title="block.heading || ''"
@@ -67,7 +67,7 @@
         />
 
         <!-- KPI cards -->
-        <div v-if="'type' in block && block.type === 'kpi'">
+        <div v-else-if="'type' in block && block.type === 'kpi'">
           <h3 v-if="block.heading" class="text-xl font-semibold mb-4">{{ block.heading }}</h3>
           <AppProposalKpi :data="block.data" />
         </div>
@@ -90,7 +90,7 @@
     </section>
 
     <!-- Closing Quote -->
-    <footer class="py-12 text-center space-y-4">
+    <footer v-if="closing && closing.quote" class="py-12 text-center space-y-4">
       <blockquote class="text-xl italic text-neutral-600 dark:text-neutral-400">
         "{{ closing.quote }}"
       </blockquote>
@@ -99,7 +99,7 @@
 </template>
 
 <script setup lang="ts">
-const { sections, closing } = useProposal()
+const { sections = [], closing = { title: '', quote: '' } } = useProposal()
 </script>
 
 <style scoped>

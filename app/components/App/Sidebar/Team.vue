@@ -26,8 +26,8 @@ const links = computed(() => [
   },
   {
     label: 'Proposal',
-    icon: 'i-lucide-file-text',
-    to: '/dashboard/proposal',
+    icon: 'i-lucide-file-plus-2',
+    to: `/dashboard/${currentTeam.value.slug}/proposal`,
   },
   {
     label: 'Posts',

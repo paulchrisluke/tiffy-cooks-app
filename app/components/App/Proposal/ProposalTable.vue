@@ -9,6 +9,34 @@
       <div class="p-4">
         <div class="overflow-x-auto">
           <table class="w-full">
+            <thead>
+              <!-- Revenue table headers -->
+              <template v-if="type === 'revenue'">
+                <tr>
+                  <th scope="col" class="sr-only p-2 text-left">Revenue Stream</th>
+                  <th scope="col" class="sr-only p-2 text-left">Description</th>
+                  <th scope="col" class="sr-only p-2 text-right">Target by Year 2</th>
+                </tr>
+              </template>
+
+              <!-- Timeline table headers -->
+              <template v-else-if="type === 'timeline'">
+                <tr>
+                  <th scope="col" class="sr-only p-2 text-left">Phase</th>
+                  <th scope="col" class="sr-only p-2 text-left">Dates</th>
+                  <th scope="col" class="sr-only p-2 text-right">Deliverables</th>
+                </tr>
+              </template>
+
+              <!-- Financial terms table headers -->
+              <template v-else-if="type === 'financial-terms'">
+                <tr>
+                  <th scope="col" class="sr-only p-2 text-left">Term</th>
+                  <th scope="col" class="sr-only p-2 text-left">Description</th>
+                  <th scope="col" class="sr-only p-2 text-right">Amount</th>
+                </tr>
+              </template>
+            </thead>
             <tbody>
               <tr
                 v-for="(item, i) in data"

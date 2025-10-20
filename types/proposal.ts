@@ -7,10 +7,12 @@ export interface BaseBlock {
 }
 
 export interface TextBlock extends BaseBlock {
+  type: 'text'
   text: string
 }
 
 export interface ListBlock extends BaseBlock {
+  type: 'list'
   list: string[]
 }
 
@@ -51,7 +53,7 @@ export interface KpiBlock extends BaseBlock {
   }[]
 }
 
-export type ProposalBlock = TextBlock | ListBlock | RevenueBlock | TimelineBlock | FinancialTermsBlock | KpiBlock | (TextBlock & ListBlock)
+export type ProposalBlock = TextBlock | ListBlock | RevenueBlock | TimelineBlock | FinancialTermsBlock | KpiBlock
 
 export interface ProposalSection {
   id: string

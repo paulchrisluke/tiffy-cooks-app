@@ -124,7 +124,7 @@ Financial Terms:
 
 Build & Launch Fee: $18,000 (one-time)
 
-Revenue Share: 25% of total platform revenue (ads + memberships + affiliates) for 2 years
+Revenue Share: PCL Labs receives 25% of total platform revenue (ads + memberships + affiliates) for 2 years
 
 Optional Buyout: At sale, 2× trailing 12-month average of PCL’s share
 
