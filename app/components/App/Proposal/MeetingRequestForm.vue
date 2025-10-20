@@ -31,7 +31,7 @@
 
 <script setup lang="ts">
 import type * as z from 'zod'
-import type { FormSubmitEvent } from '@nuxt/ui'
+import type { FormSubmitEvent } from '#ui/types'
 import { meetingRequestSchema } from '@@/shared/validations/meeting'
 
 const schema = meetingRequestSchema
@@ -43,14 +43,12 @@ const state = reactive<Partial<Schema>>({
 
 const loading = ref(false)
 const toast = useToast()
+const { submitMeetingRequest } = useMeetingRequest()
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {
   loading.value = true
   try {
-    await $fetch('/api/proposal/meeting-request', {
-      method: 'POST',
-      body: event.data,
-    })
+    await submitMeetingRequest(event.data)
 
     toast.add({
       title: 'Meeting request sent!',

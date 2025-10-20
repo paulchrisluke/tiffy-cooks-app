@@ -86,12 +86,28 @@
 <script setup lang="ts">
 import type { RevenueBlock, TimelineBlock, FinancialTermsBlock } from '@@/types/proposal'
 
-interface Props {
-  type: 'revenue' | 'timeline' | 'financial-terms'
-  data: RevenueBlock['data'] | TimelineBlock['data'] | FinancialTermsBlock['data']
+interface RevenueProps {
+  type: 'revenue'
+  data: RevenueBlock['data']
   title: string
   footer?: string
 }
+
+interface TimelineProps {
+  type: 'timeline'
+  data: TimelineBlock['data']
+  title: string
+  footer?: string
+}
+
+interface FinancialTermsProps {
+  type: 'financial-terms'
+  data: FinancialTermsBlock['data']
+  title: string
+  footer?: string
+}
+
+type Props = RevenueProps | TimelineProps | FinancialTermsProps
 
 defineProps<Props>()
 </script>

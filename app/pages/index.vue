@@ -13,7 +13,7 @@
               color="neutral"
               variant="soft"
               label="Go to App"
-              to="/dashboard"
+              to="/dashboard/proposal"
             />
             <UButtonGroup v-else>
               <UButton

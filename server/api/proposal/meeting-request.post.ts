@@ -24,7 +24,7 @@ export default defineEventHandler(async (event) => {
   if (env.MOCK_EMAIL) {
     console.table({
       to: 'paulchrisluke@gmail.com',
-      from: session.user.email,
+      from: 'REDACTED',
       userName: session.user.name,
       message: data.message,
     })
