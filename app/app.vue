@@ -8,7 +8,7 @@
 
 <script lang="ts" setup>
 useSeoMeta({
-  title: 'Supersaas',
+  title: 'PCL-Labs',
   description: 'The fullstack Nuxt 3 SaaS starter kit',
 })
 </script>

@@ -9,10 +9,12 @@ export const useProposal = () => {
       blocks: [
         {
           id: 'intro-narrative',
+          type: 'text',
           text: 'Concept led by Julia, the creative strategist behind tiffycooks.com\'s growth and monetization success. Julia now leads this next phase under the PCL Labs agency model, with full technical and operational support from the PCL Labs team. Team: Julia (Creative & Growth), Chris (CTO), Danny (Developer).',
         },
         {
           id: 'proposal-intro',
+          type: 'text',
           text: 'Together, the team brings the structure, design, and engineering needed to launch a scalable, standalone learning community for creators inspired by your journey. You focus on creating and sharing — we handle the technology from start to finish.',
         },
       ],
@@ -23,14 +25,17 @@ export const useProposal = () => {
       blocks: [
         {
           id: 'concept',
+          type: 'text',
           text: 'We\'ll build a modern creator community where passionate storytellers can learn how to grow their own blogs and creative platforms, share personal experiences from the blogging journey, connect with others building around their passions, and access both free ad-supported resources and deeper membership-based education.',
         },
         {
           id: 'monetization-strategy',
+          type: 'text',
           text: 'The platform will launch under learn.tiffycooks.com, then redirect to a new independent domain for clean ownership and resale flexibility — preserving SEO continuity, brand trust, and discoverability while establishing the new community as its own standalone property.',
         },
         {
           id: 'scale',
+          type: 'text',
           text: 'PCL Labs manages the full technical ecosystem — from hosting to app deployment — so you can focus entirely on content and community.',
         },
       ],
@@ -41,18 +46,22 @@ export const useProposal = () => {
       blocks: [
         {
           id: 'platform-overview',
+          type: 'text',
           text: 'Website & CMS — A fully functional, mobile-optimized platform launched under learn.tiffycooks.com and connected to a dedicated standalone domain for long-term growth and ownership. Includes a simple content management system for publishing and organizing posts, lessons, and updates.',
         },
         {
           id: 'ai-integration',
+          type: 'text',
           text: 'Content Strategy & Management Support — Julia leads ongoing content organization, publishing cadence, and marketing strategy and support, ensuring new lessons and creator stories are launched consistently and aligned with growth goals.',
         },
         {
           id: 'monetization-infrastructure',
+          type: 'text',
           text: 'Advertising Integration (Raptive Partnership) — Ad placements configured (in collaboration with Raptive) for clean UX, optimized performance, and seamless revenue tracking. Community engagement tools foster audience interaction and feedback. Analytics setup includes Search Console, Google Analytics, and ad performance tracking.',
         },
         {
           id: 'strategic-goal',
+          type: 'text',
           text: 'PWA Delivery & Technical Management (PCL Labs) — Progressive Web App experience optimized for iOS and Android. Hosting, maintenance, updates, and all technical operations fully managed by PCL Labs — so you can focus entirely on content and community.',
         },
       ],
@@ -92,6 +101,7 @@ export const useProposal = () => {
       blocks: [
         {
           id: 'structure',
+          type: 'list',
           heading: 'Highlights',
           list: [
             'Built under learn.tiffycooks.com and transitioned to its own domain — easy to manage and sell independently',
@@ -131,11 +141,13 @@ export const useProposal = () => {
       blocks: [
         {
           id: 'pcl-responsibilities',
-          text: 'We’ll run this under our agency model so you get secure and transparent billing and contracts, a defined scope with clear accountability, full technical, design, and growth resources under one structure, and a single creative lead and point of contact (Julia).',
+          type: 'text',
+          text: 'We\'ll run this under our agency model so you get secure and transparent billing and contracts, a defined scope with clear accountability, full technical, design, and growth resources under one structure, and a single creative lead and point of contact (Julia).',
         },
         {
           id: 'tiffy-role',
-          text: 'Julia continues as your lead creative and project manager under the PCL Labs umbrella — the same partner who built tiffycooks.com’s growth success. PCL Labs provides full backend, technical, and operational support from Chris (CTO) and Danny (Developer). This model allows you to focus entirely on storytelling and content, while PCL Labs handles everything technical — from build to growth optimization.',
+          type: 'text',
+          text: 'Julia continues as your lead creative and project manager under the PCL Labs umbrella — the same partner who built tiffycooks.com\'s growth success. PCL Labs provides full backend, technical, and operational support from Chris (CTO) and Danny (Developer). This model allows you to focus entirely on storytelling and content, while PCL Labs handles everything technical — from build to growth optimization.',
         },
         {
           id: 'financial-terms',
@@ -143,9 +155,14 @@ export const useProposal = () => {
           type: 'financial-terms',
           data: [
             {
-              term: 'Build & Launch Fee (Milestone-Based)',
-              description: 'Phase 1 – MVP Launch (Jan 2026): $12,000; Phase 2 – Membership Add-On (Post-Launch): $6,000',
-              amount: '$18,000 total',
+              term: 'Phase 1 – MVP Launch',
+              description: 'Build & Launch Fee for MVP (Jan 2026)',
+              amount: '$12,000',
+            },
+            {
+              term: 'Phase 2 – Membership Add-On',
+              description: 'Membership system development (Post-Launch)',
+              amount: '$6,000',
             },
             {
               term: 'Revenue Share',
