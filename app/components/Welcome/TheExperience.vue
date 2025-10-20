@@ -1,5 +1,5 @@
 <template>
-  <section class="h-screen flex items-center justify-center px-6 snap-start">
+  <section class="h-screen box-border flex items-center justify-center px-6 py-8">
     <div class="text-center max-w-4xl">
       <h2 class="text-3xl md:text-5xl font-bold text-neutral-900 dark:text-white mb-8">
         The Experience
@@ -14,7 +14,7 @@
       </p>
 
       <!-- Animated UI Mockup -->
-      <div class="relative">
+      <div class="relative mb-8">
         <div class="bg-white dark:bg-neutral-800 rounded-2xl shadow-2xl p-8 mx-auto max-w-sm">
           <div class="space-y-4">
             <div class="h-4 bg-primary-200 dark:bg-primary-800 rounded w-3/4" />

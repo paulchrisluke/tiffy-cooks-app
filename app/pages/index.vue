@@ -48,21 +48,46 @@
       </WebsiteSection>
     </header>
 
-    <main>
-      <WelcomeContainer>
-        <WelcomeHeyTiffy />
-        <WelcomeTheVision />
-        <WelcomeTheExperience />
-        <WelcomeAlwaysWithYou />
-        <WelcomeThePlan />
-        <WelcomeThePartnership />
-        <WelcomeClosing />
-      </WelcomeContainer>
+    <main class="h-screen">
+      <UCarousel
+        :items="welcomeSections"
+        :ui="{
+          item: 'snap-center basis-full h-screen w-full flex items-center justify-center',
+          container: 'h-full w-full',
+        }"
+        indicators
+        orientation="vertical"
+        class="h-full w-full"
+      >
+        <template #default="{ item }">
+          <component :is="item" />
+        </template>
+      </UCarousel>
     </main>
   </div>
 </template>
 
 <script setup lang="ts">
+// Import welcome components
+import WelcomeHeyTiffy from '~/components/Welcome/HeyTiffy.vue'
+import WelcomeTheVision from '~/components/Welcome/TheVision.vue'
+import WelcomeTheExperience from '~/components/Welcome/TheExperience.vue'
+import WelcomeAlwaysWithYou from '~/components/Welcome/AlwaysWithYou.vue'
+import WelcomeThePlan from '~/components/Welcome/ThePlan.vue'
+import WelcomeThePartnership from '~/components/Welcome/ThePartnership.vue'
+import WelcomeClosing from '~/components/Welcome/Closing.vue'
+
+// Define the welcome sections for the carousel
+const welcomeSections = [
+  WelcomeHeyTiffy,
+  WelcomeTheVision,
+  WelcomeTheExperience,
+  WelcomeAlwaysWithYou,
+  WelcomeThePlan,
+  WelcomeThePartnership,
+  WelcomeClosing,
+]
+
 const authOptions = ref([
   {
     label: 'Login (Email/Password)',
