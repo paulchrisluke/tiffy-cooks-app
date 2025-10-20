@@ -53,7 +53,6 @@
         <WelcomeHeyTiffy />
         <WelcomeTheVision />
         <WelcomeTheExperience />
-        <WelcomeAskTiffy />
         <WelcomeAlwaysWithYou />
         <WelcomeThePlan />
         <WelcomeThePartnership />
