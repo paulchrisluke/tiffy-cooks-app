@@ -5,12 +5,12 @@
         The Experience
       </h2>
       <p class="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 mb-6 leading-relaxed">
-        More than a recipe site.<br>
-        <span class="font-medium">It's a living kitchen.</span>
+        More than a website.<br>
+        <span class="font-medium">It’s a living community.</span>
       </p>
       <p class="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 mb-12 leading-relaxed">
-        Fans can post their own versions, share tips, and explore new dishes together —<br>
-        all in one elegant, app-ready space.
+        Creators can share what they’re building, swap lessons, and grow together —<br>
+        all in one elegant, app‑ready space.
       </p>
 
       <!-- Animated UI Mockup -->

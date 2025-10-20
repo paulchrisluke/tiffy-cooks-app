@@ -5,11 +5,10 @@
         The Partnership.
       </h2>
       <p class="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6">
-        We're the team behind your current growth —<br>
-        1M+ visitors, $30K/month in ad revenue —
+        You lead the vision. We handle the platform — design, engineering, and growth — under one roof.
       </p>
       <p class="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed mb-8">
-        and we're ready to build what comes next.
+        We’re ready to build what’s next together.
       </p>
       <div class="text-base md:text-lg text-neutral-500 dark:text-neutral-500">
         <p class="font-medium">PCL Labs: Julia, Chris, and Danny.</p>

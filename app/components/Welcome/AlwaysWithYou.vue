@@ -10,7 +10,7 @@
       <p class="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed mb-8">
         A Progressive Web App — fast, intuitive, and ready for App Store submission.<br>
         Add it to home screens. Open it like an app.<br>
-        <span class="font-medium">It just works.</span>
+        <span class="font-medium">It just works — so you can focus on the work that matters.</span>
       </p>
 
       <!-- Device icons -->

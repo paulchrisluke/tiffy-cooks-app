@@ -5,61 +5,61 @@ export const useProposal = () => {
     {
       id: 'intro',
       title: 'TiffyCooks Community — Powered by PCL Labs',
-      subtitle: 'A new platform for food lovers to learn, share, and grow — launching January 2026',
+      subtitle: 'A new platform for creators to learn, share, and grow — launching January 2026',
       blocks: [
         {
           id: 'intro-narrative',
-          text: 'We\'re PCL Labs, the growth and technology team that has already transformed tiffycooks.com into a powerhouse. Our core team of Julia (Growth & Strategy), Chris (CTO), and Danny (Developer) has scaled your site to over 1 million daily visitors and $30,000+ monthly Google Ads revenue.',
+          text: 'Concept led by Julia, the creative strategist behind tiffycooks.com\'s growth and monetization success. Julia now leads this next phase under the PCL Labs agency model, with full technical and operational support from the PCL Labs team. Team: Julia (Creative & Growth), Chris (CTO), Danny (Developer).',
         },
         {
           id: 'proposal-intro',
-          text: 'Now we want to take the next step: building a standalone community platform that creates new revenue streams while protecting and enhancing your core brand. This isn\'t just another website—it\'s a strategic business expansion that positions you for significant growth and potential acquisition.',
+          text: 'Together, the team brings the structure, design, and engineering needed to launch a scalable, standalone learning community for creators inspired by your journey. You focus on creating and sharing — we handle the technology from start to finish.',
         },
       ],
     },
     {
       id: 'vision',
-      title: 'Turn fans into community — and community into sustainable revenue.',
+      title: 'From personal storytelling → creator education → lasting enterprise value',
       blocks: [
         {
           id: 'concept',
-          text: 'We\'ll build a standalone food community platform that transforms your passionate audience into an engaged, monetizable community. Users will learn from your recipes, share their own variations, and connect with each other—all while an AI cooking assistant trained on your style and recipes helps members cook smarter and stay engaged.',
+          text: 'We\'ll build a modern creator community where passionate storytellers can learn how to grow their own blogs and creative platforms, share personal experiences from the blogging journey, connect with others building around their passions, and access both free ad-supported resources and deeper membership-based education.',
         },
         {
           id: 'monetization-strategy',
-          text: 'The platform will maintain your proven SEO strategy with free, ad-supported content while introducing premium membership tiers for exclusive recipes, live Q&A sessions, and advanced features. This dual approach maximizes both reach and revenue.',
+          text: 'The platform will launch under learn.tiffycooks.com, then redirect to a new independent domain for clean ownership and resale flexibility — preserving SEO continuity, brand trust, and discoverability while establishing the new community as its own standalone property.',
         },
         {
           id: 'scale',
-          text: 'Built for maximum flexibility and growth, the platform will be hosted on a new domain (allowing for independent sale) while being strategically linked from learn.tiffycooks.com to maintain SEO crawlability and audience continuity.',
+          text: 'PCL Labs manages the full technical ecosystem — from hosting to app deployment — so you can focus entirely on content and community.',
         },
       ],
     },
     {
       id: 'platform',
-      title: 'A modern, SEO-optimized community platform — built for engagement and monetization.',
+      title: 'A PWA learning and publishing platform built for engagement, SEO, and app distribution',
       blocks: [
         {
           id: 'platform-overview',
-          text: 'The platform combines the best of community engagement with proven monetization strategies. Users will have personal dashboards to save recipes, share their own creations, and interact with your content through comments and discussions.',
+          text: 'Website & CMS — A fully functional, mobile-optimized platform launched under learn.tiffycooks.com and connected to a dedicated standalone domain for long-term growth and ownership. Includes a simple content management system for publishing and organizing posts, lessons, and updates.',
         },
         {
           id: 'ai-integration',
-          text: 'Our "Ask Tiffy" AI chatbot, trained specifically on your cooking style and recipes, will provide personalized cooking assistance and help users discover new content. This creates a unique value proposition that keeps users engaged and coming back.',
+          text: 'Content Strategy & Management Support — Julia leads ongoing content organization, publishing cadence, and marketing strategy and support, ensuring new lessons and creator stories are launched consistently and aligned with growth goals.',
         },
         {
           id: 'monetization-infrastructure',
-          text: 'The platform includes seamless Google Ads integration for free content, payment processing for premium memberships, and advanced SEO optimization to ensure maximum discoverability and revenue potential.',
+          text: 'Advertising Integration (Raptive Partnership) — Ad placements configured (in collaboration with Raptive) for clean UX, optimized performance, and seamless revenue tracking. Community engagement tools foster audience interaction and feedback. Analytics setup includes Search Console, Google Analytics, and ad performance tracking.',
         },
         {
           id: 'strategic-goal',
-          text: 'Our goal is to build an owned audience layer that\'s searchable, interactive, and highly valuable to potential acquirers. This positions you not just as a content creator, but as the owner of a thriving digital community business.',
+          text: 'PWA Delivery & Technical Management (PCL Labs) — Progressive Web App experience optimized for iOS and Android. Hosting, maintenance, updates, and all technical operations fully managed by PCL Labs — so you can focus entirely on content and community.',
         },
       ],
     },
     {
       id: 'revenue',
-      title: 'Blending reach and retention — ad-supported + member-supported.',
+      title: 'Sustainable, diversified revenue — without sponsorships or affiliates',
       blocks: [
         {
           id: 'streams',
@@ -68,41 +68,37 @@ export const useProposal = () => {
           data: [
             {
               stream: 'Google Ads',
-              description: 'Monetize free content, user recipes, and community discussions',
+              description: 'Monetize free educational and community content with optimized placements',
               target: '$20K–25K/mo',
             },
             {
               stream: 'Memberships',
-              description: 'Paid tiers for exclusive recipes, live Q&A, and premium features',
+              description: 'Paid tiers for exclusive courses and membership features',
               target: '$10K–15K/mo',
             },
             {
-              stream: 'Affiliate / Brand Partnerships',
-              description: 'Integrated product links and sponsored content',
-              target: '$5K–10K/mo',
-            },
-            {
-              stream: 'Total Goal',
-              description: 'Combined recurring + ad revenue',
-              target: '$35K–50K/mo',
+              stream: 'Total Projected',
+              description: 'Combined recurring revenue (ads + memberships)',
+              target: '$30K–40K/month recurring',
             },
           ],
-          footer: 'All managed by PCL Labs under one integrated system.',
+          footer: 'All ad management and optimization handled by PCL Labs — so you can focus on creative leadership, not ad logistics.',
         },
       ],
     },
     {
       id: 'financial-impact',
-      title: 'A new revenue engine — and a clean, sellable asset.',
+      title: 'A new, stand-alone digital property that grows value from day one.',
       blocks: [
         {
           id: 'structure',
-          heading: 'Structure',
+          heading: 'Highlights',
           list: [
-            'Built on a separate domain (e.g. tiffycookscommunity.com)',
-            'Redirected from a tiffycooks.com subdomain for traffic + crawlability',
-            'Fully ownable and transferrable at sale',
-            'Ads + community continue earning even if core brand is sold separately',
+            'Built under learn.tiffycooks.com and transitioned to its own domain — easy to manage and sell independently',
+            'Strong SEO + app visibility — high recurring traffic and engagement potential',
+            'Diversified, recurring revenue (ads + memberships)',
+            'Demonstrates scalable, creator-focused community tech — highly attractive to acquirers',
+            'Hands-free infrastructure: PCL Labs handles development, hosting, CMS, analytics, and growth systems',
           ],
         },
         {
@@ -111,14 +107,14 @@ export const useProposal = () => {
           type: 'kpi',
           data: [
             {
-              title: '2-Year Profit',
-              value: '$500K+',
-              description: 'Estimated cumulative profit',
+              title: 'Estimated 2-year profit',
+              value: '$400K–$500K+',
+              description: 'Cumulative profit estimate',
             },
             {
-              title: 'Enterprise Value',
-              value: '$2–3M',
-              description: 'Added value at 4–6× multiple',
+              title: 'Enterprise value add',
+              value: '$2M+',
+              description: 'Based on 4–6× multiple',
             },
             {
               title: 'Strategic Value',
@@ -131,15 +127,15 @@ export const useProposal = () => {
     },
     {
       id: 'partnership',
-      title: 'Simple, aligned structure for focus and growth.',
+      title: 'Aligned incentives — with agency structure and single-point creative leadership.',
       blocks: [
         {
           id: 'pcl-responsibilities',
-          text: 'PCL Labs will handle all technical development, ongoing maintenance, SEO infrastructure, ad integration and optimization, growth analytics and reporting, plus community moderation tools and AI integration. We\'ll manage the entire technical ecosystem so you can focus on what you do best.',
+          text: 'We’ll run this under our agency model so you get secure and transparent billing and contracts, a defined scope with clear accountability, full technical, design, and growth resources under one structure, and a single creative lead and point of contact (Julia).',
         },
         {
           id: 'tiffy-role',
-          text: 'Your role will be focused on creative direction, branding, and community engagement—the areas where your expertise and personal connection with your audience create the most value. We\'ll handle the technical complexity while you drive the creative vision.',
+          text: 'Julia continues as your lead creative and project manager under the PCL Labs umbrella — the same partner who built tiffycooks.com’s growth success. PCL Labs provides full backend, technical, and operational support from Chris (CTO) and Danny (Developer). This model allows you to focus entirely on storytelling and content, while PCL Labs handles everything technical — from build to growth optimization.',
         },
         {
           id: 'financial-terms',
@@ -147,19 +143,19 @@ export const useProposal = () => {
           type: 'financial-terms',
           data: [
             {
-              term: 'Build & Launch Fee',
-              description: 'One-time development and launch cost',
-              amount: '$18,000',
+              term: 'Build & Launch Fee (Milestone-Based)',
+              description: 'Phase 1 – MVP Launch (Jan 2026): $12,000; Phase 2 – Membership Add-On (Post-Launch): $6,000',
+              amount: '$18,000 total',
             },
             {
               term: 'Revenue Share',
-              description: 'Percentage of total platform revenue',
+              description: 'Share of all platform revenue (ads + memberships) for ongoing support and optimization',
               amount: '25% for 2 years',
             },
             {
-              term: 'Optional Buyout',
-              description: 'At sale, multiple of trailing 12-month average',
-              amount: '2× PCL\'s share',
+              term: 'Buyout at Sale',
+              description: '2× trailing 12-month average of PCL’s share',
+              amount: '2× PCL’s share',
             },
           ],
         },
@@ -168,11 +164,12 @@ export const useProposal = () => {
           heading: 'Project Timeline',
           type: 'timeline',
           data: [
-            { phase: 'Discovery & Architecture', dates: 'Nov 2025', deliverables: 'Define features, tech stack, domain setup' },
-            { phase: 'Development & Integration', dates: 'Nov–Dec 2025', deliverables: 'Platform build, user accounts, AI training, ad setup' },
-            { phase: 'Launch', dates: 'Jan 2026', deliverables: 'Public rollout + soft community launch' },
-            { phase: 'Optimization & Growth', dates: 'Feb–Dec 2026', deliverables: 'SEO, content scaling, reporting' },
-            { phase: 'Sale Prep', dates: '2027', deliverables: 'Clean data, analytics handoff, valuation package' },
+            { phase: 'Discovery & Architecture', dates: 'Nov 2025', deliverables: 'Finalize features, tech stack, CMS structure, and domain setup (learn.tiffycooks.com + redirect plan)' },
+            { phase: 'Development & Testing', dates: 'Nov–Dec 2025', deliverables: 'MVP build (community + CMS + ads)' },
+            { phase: 'MVP Launch', dates: 'Jan 2026', deliverables: 'Public launch under learn.tiffycooks.com with redirect to new domain' },
+            { phase: 'Membership Feature Development', dates: 'Feb–Apr 2026', deliverables: 'Build and release membership system (saved lessons, exclusive courses)' },
+            { phase: 'Optimization & Growth', dates: 'Feb–Dec 2026', deliverables: 'SEO, retention, ad optimization, reporting' },
+            { phase: 'Sale Preparation', dates: '2027', deliverables: 'Handoff documentation, valuation support' },
           ],
         },
       ],
@@ -181,7 +178,7 @@ export const useProposal = () => {
 
   const closing: ProposalClosing = {
     title: 'TiffyCooks x PCL Labs — Build. Grow. Exit.',
-    quote: 'A community built on Tiffy\'s creativity — and powered by data, engagement, and smart monetization.',
+    quote: 'A scalable, ad-supported learning community built on Tiffy’s storytelling — and designed for long-term value.',
   }
 
   return {

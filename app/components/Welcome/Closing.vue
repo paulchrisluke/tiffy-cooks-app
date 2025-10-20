@@ -9,10 +9,10 @@
         <span class="font-medium">The TiffyCooks Community.</span>
       </p>
       <p class="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed mb-8">
-        A platform for creativity, connection, and long-term value.
+        A platform for creator education, connection, and long‑term value.
       </p>
       <p class="text-base md:text-lg text-neutral-500 dark:text-neutral-500 mb-8">
-        Built with the same care you bring to every recipe.
+        Built with the same care you bring to your work.
       </p>
 
       <div class="space-y-6">

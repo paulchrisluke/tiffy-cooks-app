@@ -8,8 +8,8 @@
         Your voice. Your style.
       </p>
       <p class="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        An AI cooking assistant trained on your recipes,<br>
-        ready to help people cook like you — even when you're offline.
+        An assistant trained on your content and style —<br>
+        ready to help, even when you’re offline.
       </p>
     </div>
   </section>

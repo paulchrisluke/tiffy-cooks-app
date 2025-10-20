@@ -5,11 +5,11 @@
         The Plan
       </h2>
       <p class="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6">
-        Your content stays free, supported by clean, optimized Google Ads.
+        Your education stays accessible with clean, optimized Google Ads.
       </p>
       <p class="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6">
-        Built on its own domain, redirected from learn.tiffycooks.com to keep your SEO strong —
-        and ready to stand alone when it's time to sell.
+        Launch under learn.tiffycooks.com, then redirect to a standalone domain —
+        preserving SEO while giving you clean ownership and resale flexibility.
       </p>
       <div class="text-base md:text-lg text-neutral-500 dark:text-neutral-500 space-y-2">
         <p>Start in November. Launch in January.</p>

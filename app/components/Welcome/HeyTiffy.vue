@@ -6,11 +6,11 @@
       </h1>
 
       <p class="text-xl md:text-2xl text-neutral-600 dark:text-neutral-400 mb-6">
-        Welcome to what's next.
+        Welcome to what’s next — your creator community.
       </p>
 
       <p class="text-lg md:text-xl text-neutral-500 dark:text-neutral-500 max-w-2xl mx-auto">
-        A new home for your recipes, your community, and your creativity.
+        A new home for your stories, your community, and your growth.
       </p>
     </div>
   </section>
