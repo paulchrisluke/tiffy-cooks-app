@@ -16,21 +16,20 @@ export default defineEventHandler(async (event) => {
   const htmlTemplate = await render(MeetingRequest, {
     userName: session.user.name,
     userEmail: session.user.email,
-    teamName: session.user.team?.name, // if available
     message: data.message,
   })
 
   // 4. Send email
   if (env.MOCK_EMAIL) {
     console.table({
-      to: 'paulchrisluke@gmail.com',
+      to: env.MEETING_REQUEST_RECIPIENT_EMAIL,
       from: 'REDACTED',
       userName: session.user.name,
       message: data.message,
     })
   } else {
     await sendEmail({
-      to: 'paulchrisluke@gmail.com',
+      to: env.MEETING_REQUEST_RECIPIENT_EMAIL,
       subject: `Meeting Request from ${session.user.name} - TiffyCooks Proposal`,
       html: htmlTemplate,
     })

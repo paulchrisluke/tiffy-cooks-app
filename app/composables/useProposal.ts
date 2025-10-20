@@ -42,7 +42,7 @@ export const useProposal = () => {
     },
     {
       id: 'platform',
-      title: 'A PWA learning and publishing platform built for engagement, SEO, and app distribution',
+      title: 'A modern learning and publishing platform built for engagement, SEO, and app distribution',
       blocks: [
         {
           id: 'platform-overview',
@@ -57,12 +57,12 @@ export const useProposal = () => {
         {
           id: 'monetization-infrastructure',
           type: 'text',
-          text: 'Advertising Integration (Raptive Partnership) — Ad placements configured (in collaboration with Raptive) for clean UX, optimized performance, and seamless revenue tracking. Community engagement tools foster audience interaction and feedback. Analytics setup includes Search Console, Google Analytics, and ad performance tracking.',
+          text: 'Advertising Integration — Ad placements configured for clean UX, optimized performance, and seamless revenue tracking. Community engagement tools foster audience interaction and feedback. Analytics setup includes Search Console, Google Analytics, and ad performance tracking.',
         },
         {
           id: 'strategic-goal',
           type: 'text',
-          text: 'PWA Delivery & Technical Management (PCL Labs) — Progressive Web App experience optimized for iOS and Android. Hosting, maintenance, updates, and all technical operations fully managed by PCL Labs — so you can focus entirely on content and community.',
+          text: 'App-Ready Platform & Technical Management (PCL Labs) — Mobile-optimized experience that works seamlessly on iOS and Android, with future App Store submission capabilities. Hosting, maintenance, updates, and all technical operations fully managed by PCL Labs — so you can focus entirely on content and community.',
         },
       ],
     },
@@ -185,7 +185,7 @@ export const useProposal = () => {
             { phase: 'Development & Testing', dates: 'Nov–Dec 2025', deliverables: 'MVP build (community + CMS + ads)' },
             { phase: 'MVP Launch', dates: 'Jan 2026', deliverables: 'Public launch under learn.tiffycooks.com with redirect to new domain' },
             { phase: 'Membership Feature Development', dates: 'Feb–Apr 2026', deliverables: 'Build and release membership system (saved lessons, exclusive courses)' },
-            { phase: 'Optimization & Growth', dates: 'Feb–Dec 2026', deliverables: 'SEO, retention, ad optimization, reporting' },
+            { phase: 'Optimization & Growth', dates: 'Feb–Dec 2026', deliverables: 'SEO, retention, ad optimization, reporting, and App Store submission preparation' },
             { phase: 'Sale Preparation', dates: '2027', deliverables: 'Handoff documentation, valuation support' },
           ],
         },

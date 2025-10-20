@@ -5,7 +5,7 @@
         Let's Build Something Unforgettable
       </h2>
       <p class="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6">
-        Let's build something unforgettable.<br>
+        Where creators learn, connect, and grow together.<br>
         <span class="font-medium">The TiffyCooks Community.</span>
       </p>
       <p class="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed mb-8">

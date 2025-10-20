@@ -15,6 +15,6 @@ export default defineAppConfig({
   },
   seo: {
     title: 'PCL-Labs',
-    description: 'Top Rated Plus on Upwork. With over 15 years experience, PCL-Labs provides best-in-class digital and print development, design, and marketing assets to grow your business end-to-end.',
+    description: 'Top Rated Plus on Upwork. With over 15 years of experience, PCL-Labs provides digital/print development, design, and marketing to grow your business.',
   },
 })
