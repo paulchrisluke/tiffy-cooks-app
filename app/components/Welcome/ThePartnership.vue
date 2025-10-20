@@ -1,5 +1,5 @@
 <template>
-  <section class="h-screen flex items-center justify-center px-6 py-8">
+  <section class="h-screen box-border flex items-center justify-center px-6 py-8">
     <div class="text-center max-w-2xl">
       <h2 class="text-3xl md:text-5xl font-bold text-neutral-900 dark:text-white mb-8">
         The Partnership.
