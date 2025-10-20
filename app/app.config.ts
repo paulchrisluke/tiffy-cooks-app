@@ -14,7 +14,7 @@ export default defineAppConfig({
     },
   },
   seo: {
-    title: 'Supersaas',
-    description: 'The fullstack Nuxt 3 SaaS starter kit',
+    title: 'PCL-Labs',
+    description: 'Top Rated Plus on Upwork. With over 15 years of experience, PCL-Labs provides digital/print development, design, and marketing to grow your business.',
   },
 })

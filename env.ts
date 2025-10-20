@@ -21,6 +21,7 @@ export const env = createEnv({
     NUXT_STRIPE_SECRET_KEY: z.string().min(1),
     NUXT_STRIPE_WEBHOOK_SECRET: z.string().min(1),
     FROM_EMAIL: z.string().email(),
+    MEETING_REQUEST_RECIPIENT_EMAIL: z.string().email(),
     EMAIL_PROVIDER: z.enum([
       'resend',
       'mailgun',

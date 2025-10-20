@@ -3,7 +3,7 @@
     <header class="px-4">
       <WebsiteSection class="flex w-full items-center justify-between">
         <NuxtLink to="/" class="flex items-center gap-2">
-          <img src="/logo.png" alt="logo" class="h-6 w-auto md:h-7">
+          <img src="/pcl-labs-logo.svg" alt="PCL Labs" class="h-6 w-auto md:h-7">
           <p class="font-bold">TiffyCooks</p>
         </NuxtLink>
         <div class="flex items-center gap-3">
@@ -53,7 +53,6 @@
         <WelcomeHeyTiffy />
         <WelcomeTheVision />
         <WelcomeTheExperience />
-        <WelcomeAskTiffy />
         <WelcomeAlwaysWithYou />
         <WelcomeThePlan />
         <WelcomeThePartnership />

@@ -1,7 +1,7 @@
 <template>
   <main class="flex min-h-screen items-center justify-center">
     <div class="mx-auto w-full max-w-sm space-y-4">
-      <img src="/logo.png" alt="logo" class="mx-auto h-10 w-auto">
+      <img src="/pcl-labs-logo.svg" alt="PCL Labs" class="mx-auto h-10 w-auto">
       <div class="text-center">
         <p class="text-lg font-bold">Sign in to your account</p>
         <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">

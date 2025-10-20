@@ -19,7 +19,7 @@ export default defineTask({
       },
       {
         email: 'mike.jones@example.com',
-        referrer: 'https://supersaas.dev',
+        referrer: 'https://paulchrisluke.com',
       },
       {
         email: 'emily.brown@example.com',

@@ -5,11 +5,15 @@
     </div>
 
     <!-- Progress indicator -->
-    <WelcomeProgress :current-slide="currentSlide" :total-slides="8" />
+    <WelcomeProgress :current-slide="currentSlide" :total-slides="TOTAL_SLIDES" />
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
+
+const TOTAL_SLIDES = 8
+
 const currentSlide = ref(1)
 const scrollContainer = ref<HTMLElement>()
 
@@ -20,7 +24,7 @@ const handleScroll = () => {
   const scrollTop = scrollContainer.value.scrollTop
   const windowHeight = window.innerHeight
   const slideIndex = Math.round(scrollTop / windowHeight) + 1
-  currentSlide.value = Math.max(1, Math.min(8, slideIndex))
+  currentSlide.value = Math.max(1, Math.min(TOTAL_SLIDES, slideIndex))
 }
 
 onMounted(() => {

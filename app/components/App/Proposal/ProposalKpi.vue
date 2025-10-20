@@ -2,7 +2,7 @@
   <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
     <div
       v-for="item in data"
-      :key="item.title"
+      :key="`${item.title}-${item.value}`"
       class="rounded-xl bg-[#fbfaf9] p-1.5 dark:bg-neutral-950"
     >
       <div class="card-shadow rounded-md bg-white p-4 dark:bg-neutral-900">

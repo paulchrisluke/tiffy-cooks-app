@@ -2,10 +2,10 @@
   <section class="h-screen flex items-center justify-center px-6 snap-start">
     <div class="text-center max-w-2xl">
       <h2 class="text-3xl md:text-5xl font-bold text-neutral-900 dark:text-white mb-8">
-        Closing.
+        Let's Build Something Unforgettable
       </h2>
       <p class="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6">
-        Let's build something unforgettable.<br>
+        Where creators learn, connect, and grow together.<br>
         <span class="font-medium">The TiffyCooks Community.</span>
       </p>
       <p class="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed mb-8">
@@ -17,7 +17,7 @@
 
       <div class="space-y-6">
         <UButton
-          label="View Proposal"
+          label="View Proposal Details"
           color="primary"
           size="xl"
           class="rounded-2xl"

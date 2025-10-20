@@ -9,7 +9,7 @@
         Welcome to what’s next — your creator community.
       </p>
 
-      <p class="text-lg md:text-xl text-neutral-500 dark:text-neutral-500 max-w-2xl mx-auto">
+      <p class="text-lg md:text-xl text-neutral-500 dark:text-neutral-400 max-w-2xl mx-auto">
         A new home for your stories, your community, and your growth.
       </p>
     </div>

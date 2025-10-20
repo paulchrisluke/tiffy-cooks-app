@@ -11,7 +11,7 @@
       <p class="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed mb-8">
         a place where creators learn from your journey, share their own, and connect with you and each other.
       </p>
-      <div class="text-base md:text-lg text-neutral-500 dark:text-neutral-500">
+      <div class="text-base md:text-lg text-neutral-500 dark:text-neutral-400">
         <p class="font-medium">Built by PCL Labs. Designed by Julia.</p>
         <p>Smart, seamless, and completely yours.</p>
       </div>

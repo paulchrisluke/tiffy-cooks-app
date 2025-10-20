@@ -26,7 +26,7 @@
       <!-- Content Blocks -->
       <div v-for="block in section.blocks" :key="block.id" class="mb-8">
         <!-- Simple text (no card) -->
-        <div v-if="'text' in block && !('list' in block)">
+        <div v-if="block && block.type === 'text'">
           <h3 v-if="block.heading" class="text-xl font-semibold mb-4">{{ block.heading }}</h3>
           <p class="text-base text-neutral-600 dark:text-neutral-300 leading-relaxed">
             {{ block.text }}
@@ -35,7 +35,7 @@
 
         <!-- Lists in cards (strategic - only for long lists) -->
         <AppProposalCard
-          v-else-if="'list' in block && block.list && block.list.length >= 4"
+          v-else-if="block.type === 'list' && block.list && block.list.length >= 4"
           :title="block.heading"
         >
           <ul class="space-y-3">
@@ -47,7 +47,7 @@
         </AppProposalCard>
 
         <!-- Short lists (no card) -->
-        <div v-else-if="'list' in block && block.list && block.list.length < 4">
+        <div v-else-if="block.type === 'list' && block.list && block.list.length < 4">
           <h3 v-if="block.heading" class="text-xl font-semibold mb-4">{{ block.heading }}</h3>
           <ul class="space-y-2">
             <li v-for="(item, i) in block.list" :key="i" class="flex items-start gap-3">
@@ -57,17 +57,33 @@
           </ul>
         </div>
 
-        <!-- Tables in cards -->
+        <!-- Revenue table -->
         <AppProposalTable
-          v-else-if="'type' in block && (block.type === 'revenue' || block.type === 'timeline' || block.type === 'financial-terms')"
+          v-else-if="block.type === 'revenue'"
           :type="block.type"
           :data="block.data"
           :title="block.heading || ''"
-          :footer="'footer' in block ? block.footer : undefined"
+          :footer="block.footer"
+        />
+
+        <!-- Timeline table -->
+        <AppProposalTable
+          v-else-if="block.type === 'timeline'"
+          :type="block.type"
+          :data="block.data"
+          :title="block.heading || ''"
+        />
+
+        <!-- Financial terms table -->
+        <AppProposalTable
+          v-else-if="block.type === 'financial-terms'"
+          :type="block.type"
+          :data="block.data"
+          :title="block.heading || ''"
         />
 
         <!-- KPI cards -->
-        <div v-else-if="'type' in block && block.type === 'kpi'">
+        <div v-else-if="block.type === 'kpi'">
           <h3 v-if="block.heading" class="text-xl font-semibold mb-4">{{ block.heading }}</h3>
           <AppProposalKpi :data="block.data" />
         </div>
@@ -99,7 +115,7 @@
 </template>
 
 <script setup lang="ts">
-const { sections = [], closing = { title: '', quote: '' } } = useProposal()
+const { sections = [], closing = { title: '', quote: '' } } = useProposal() ?? {}
 </script>
 
 <style scoped>
