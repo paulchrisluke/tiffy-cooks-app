@@ -21,12 +21,10 @@ export default defineEventHandler(async (event) => {
 
   // 4. Send email
   if (env.MOCK_EMAIL) {
-    console.table({
-      to: env.FROM_EMAIL,
-      from: 'REDACTED',
-      userName: session.user.name,
-      message: data.message,
-    })
+    // Only log a safe marker in test environment, no PII
+    if (process.env.NODE_ENV === 'test') {
+      console.log('Mock email would be sent (PII redacted)')
+    }
   } else {
     await sendEmail({
       to: env.FROM_EMAIL,
