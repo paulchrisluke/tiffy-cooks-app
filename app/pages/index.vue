@@ -48,7 +48,7 @@
       </WebsiteSection>
     </header>
 
-    <main>
+    <main class="snap-y snap-mandatory">
       <WelcomeContainer>
         <WelcomeHeyTiffy />
         <WelcomeTheVision />

@@ -22,14 +22,14 @@ export default defineEventHandler(async (event) => {
   // 4. Send email
   if (env.MOCK_EMAIL) {
     console.table({
-      to: env.MEETING_REQUEST_RECIPIENT_EMAIL,
+      to: env.FROM_EMAIL,
       from: 'REDACTED',
       userName: session.user.name,
       message: data.message,
     })
   } else {
     await sendEmail({
-      to: env.MEETING_REQUEST_RECIPIENT_EMAIL,
+      to: env.FROM_EMAIL,
       subject: `Meeting Request from ${session.user.name} - TiffyCooks Proposal`,
       html: htmlTemplate,
     })

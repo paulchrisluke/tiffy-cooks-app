@@ -14,8 +14,6 @@ Docs - https://paulchrisluke.com
 
 The following environment variables are required for the application to function properly:
 
-- `MEETING_REQUEST_RECIPIENT_EMAIL` - Email address where meeting requests should be sent (must be a valid email format)
-
 ## Dev
 
 Run the app locally

@@ -1,5 +1,5 @@
 <template>
-  <section class="h-screen flex items-center justify-center px-6 snap-start">
+  <section class="h-screen flex items-center justify-center px-6 py-8 snap-start">
     <div class="text-center max-w-3xl">
       <h2 class="text-3xl md:text-5xl font-bold text-neutral-900 dark:text-white mb-8">
         The Vision
