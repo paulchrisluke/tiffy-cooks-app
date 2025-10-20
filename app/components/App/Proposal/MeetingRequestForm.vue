@@ -37,7 +37,7 @@ import { meetingRequestSchema } from '@@/shared/validations/meeting'
 const schema = meetingRequestSchema
 type Schema = z.output<typeof schema>
 
-const state = reactive<Partial<Schema>>({
+const state = reactive<Schema>({
   message: '',
 })
 
