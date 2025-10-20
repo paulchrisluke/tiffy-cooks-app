@@ -25,6 +25,11 @@ const links = computed(() => [
     to: `/dashboard/${currentTeam.value.slug}`,
   },
   {
+    label: 'Proposal',
+    icon: 'i-lucide-file-text',
+    to: '/dashboard/proposal',
+  },
+  {
     label: 'Posts',
     icon: 'i-lucide-file-text',
     to: `/dashboard/${currentTeam.value.slug}/posts`,

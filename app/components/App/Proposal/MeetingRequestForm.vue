@@ -1,0 +1,74 @@
+<template>
+  <UForm :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
+    <UFormField label="Message" name="message">
+      <UTextarea
+        v-model="state.message"
+        placeholder="Let's discuss the proposal details, timeline, or any questions you have..."
+        :rows="4"
+        size="lg"
+        variant="subtle"
+        class="w-full"
+        :ui="{
+          base: 'w-full',
+          wrapper: 'w-full',
+        }"
+      />
+    </UFormField>
+
+    <UButton
+      type="submit"
+      size="xl"
+      block
+      :loading="loading"
+      label="Schedule Meeting"
+      icon="i-lucide-calendar"
+      :ui="{
+        leadingIcon: 'size-5',
+      }"
+    />
+  </UForm>
+</template>
+
+<script setup lang="ts">
+import * as z from 'zod'
+import type { FormSubmitEvent } from '@nuxt/ui'
+import { meetingRequestSchema } from '@@/shared/validations/meeting'
+
+const schema = meetingRequestSchema
+type Schema = z.output<typeof schema>
+
+const state = reactive<Partial<Schema>>({
+  message: '',
+})
+
+const loading = ref(false)
+const toast = useToast()
+
+async function onSubmit(event: FormSubmitEvent<Schema>) {
+  loading.value = true
+  try {
+    await $fetch('/api/proposal/meeting-request', {
+      method: 'POST',
+      body: event.data,
+    })
+
+    toast.add({
+      title: 'Meeting request sent!',
+      description: 'Paul will reach out to schedule a time to discuss the proposal.',
+      color: 'success',
+    })
+
+    // Clear form
+    state.message = ''
+  } catch (error) {
+    console.error(error)
+    toast.add({
+      title: 'Error',
+      description: 'Something went wrong. Please try again.',
+      color: 'error',
+    })
+  } finally {
+    loading.value = false
+  }
+}
+</script>

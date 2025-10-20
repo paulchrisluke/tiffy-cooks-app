@@ -103,7 +103,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
   loading.value = true
   const { error } = await login(event.data)
   if (!error) {
-    await navigateTo('/dashboard')
+    await navigateTo('/dashboard/proposal')
   }
   loading.value = false
 }
