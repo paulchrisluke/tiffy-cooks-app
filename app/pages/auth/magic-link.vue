@@ -129,7 +129,7 @@ async function onOtpSubmit(event: FormSubmitEvent<OtpSchema>) {
       body: event.data,
     })
     await refreshSession()
-    await navigateTo('/dashboard')
+    await navigateTo('/dashboard/proposal')
   } catch (error) {
     toast.add({
       title: 'Failed to verify code',

@@ -58,7 +58,7 @@ const onSubmit = async (event: FormSubmitEvent<LoginSchema>): Promise<void> => {
       title: 'Logged in successfully',
       color: 'success',
     })
-    await navigateTo('/dashboard')
+    await navigateTo('/dashboard/proposal')
   }
   loading.value = false
 }

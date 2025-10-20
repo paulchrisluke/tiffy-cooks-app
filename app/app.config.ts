@@ -9,7 +9,7 @@ export default defineAppConfig({
       },
     },
     colors: {
-      primary: 'emerald',
+      primary: 'rose',
       neutral: 'neutral',
     },
   },

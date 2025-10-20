@@ -80,5 +80,5 @@ export const handleOAuthSuccess = async (
     name: sanitizedUser.name,
     email: sanitizedUser.email,
   })
-  return sendRedirect(event, '/dashboard')
+  return sendRedirect(event, '/dashboard/proposal')
 }

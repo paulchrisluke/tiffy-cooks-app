@@ -80,7 +80,7 @@ export default defineEventHandler(async (event) => {
   // 7. Get the team's slug for the redirect
   const team = await getTeam(invite.teamId)
   if (!team) {
-    return sendRedirect(event, '/dashboard', 302)
+    return sendRedirect(event, '/dashboard/proposal', 302)
   }
 
   // 8. Set this team as the last used team

@@ -141,7 +141,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
       // See https://github.com/atinux/nuxt-auth-utils/issues/357
       await nextTick()
       await useUserSession().fetch()
-      await navigateTo('/dashboard')
+      await navigateTo('/dashboard/proposal', { replace: true })
     } else {
       if (!error) {
         registered.value = true
